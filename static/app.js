@@ -1,6 +1,7 @@
 // static/app.js
 document.addEventListener("DOMContentLoaded", () => {
   const chat = document.getElementById("chat");
+  const chatContainer = document.querySelector(".main");
   const input = document.getElementById("inputField");
   const sendBtn = document.getElementById("sendBtn");
   const analyzeBtn = document.getElementById("analyzeBtn");
@@ -40,8 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
     bubble.appendChild(content);
     row.appendChild(bubble);
     chat.appendChild(row);
-    // scroll to bottom
-    window.setTimeout(() => window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'}), 50);
+    // Scroll the chat container so the newest message stays in view
+    requestAnimationFrame(scrollChatToBottom);
+  }
+
+  function scrollChatToBottom() {
+    const target = chatContainer;
+    if (target && typeof target.scrollTo === "function") {
+      target.scrollTo({ top: target.scrollHeight, behavior: "smooth" });
+      return;
+    }
+
+    if (target) {
+      target.scrollTop = target.scrollHeight;
+      return;
+    }
+
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }
 
   async function sendMessage() {

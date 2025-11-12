@@ -1,0 +1,1008 @@
+Delivered-To: correo.x.temporal@gmail.com
+Received: by 2002:a05:6f02:8490:b0:a7:5abd:bce2 with SMTP id y16csp2021948rce;
+        Thu, 14 Aug 2025 16:04:04 -0700 (PDT)
+X-Received: by 2002:a05:690c:6112:b0:71c:1754:26a7 with SMTP id 00721157ae682-71e6dd30e8fmr336197b3.32.1755212644313;
+        Thu, 14 Aug 2025 16:04:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1755212644; cv=none;
+        d=google.com; s=arc-20240605;
+        b=VKkEu3A1DPcrJXYEsNe4RsZI7QPPkIwWlaatJ7WwcpBK3BuvJ3QstvhbAEhd8fWJAc
+         Bwgy8pZh2VSWdoHZZtv3jOTheEwKn6CoIqqvkEhqycRzAf5GF+S0Jp7xwSsAJ5tkt/TH
+         Gd9Xkeijc3XHyeDf2i1/lzHgVLKBh82K/FlB1H6Zurb8GyTE2jXjVRsL43mG7A/EfJi5
+         VT3tRATk68JxJqqWjtN6vNZdPWa1VZMc6dyL4BBGaja0qwnyw6CqQslFdiu71Csla4rG
+         E6iLUJp3XSMvlZZFlScIhF5o/E8MLbngxcfGNNwkJgFq2EWNA6yU0/FJHejaEsx8gsT2
+         FdnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=XquJRtlbRYxJ+1e5YXLaA2vBvItz+D/nxUzPofMRVMU=;
+        fh=T13OAySwBI0JV6BuzDH+QvM7+wFoykHshUTApZDt2h0=;
+        b=eobgCBiY1g6yxZ1z8Jd9Ro4yL3R3H3Dt5IjCOLO/Qt0GjfiiCBOoLKvVuHHZuGReyv
+         kr0UQsEK49aJmQN573Vwqoi6VdB3C7OCYuzI/Nt0vLtmI5UpCFMQ9n2S+ZFdCT0PHzJR
+         CmtAe3coBmMunmDrPYqn0TqtBz5ALva+I79hXOJwyWsxudKjqdEPiXcAPWS6wCE+/PIv
+         DJsttn189UnzT4xgDywH2XDSm52105IEOQjySsV0QUwgjU5Jk03awj/Qq1rcn2qgf5UM
+         vNl6PZiEjwesiHyjtjqjSM7T9Gmtdu0Q/jLSCEkt5P/z5sVumjuuCtZsmo+qAKEyyhO8
+         orgA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=r+Tmjl4B;
+       spf=pass (google.com: domain of 3y2ueabukap4muumrk-mksoto-tuxkvr4muumrk.ius@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3Y2ueaBUKAP4muumrk-mksoto-tuxkvr4muumrk.ius@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3Y2ueaBUKAP4muumrk-mksoto-tuxkvr4muumrk.ius@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 00721157ae682-71b5a81c73csor250839657b3.13.2025.08.14.16.04.03
+        for <correo.x.temporal@gmail.com>
+        (Google Transport Security);
+        Thu, 14 Aug 2025 16:04:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3y2ueabukap4muumrk-mksoto-tuxkvr4muumrk.ius@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=r+Tmjl4B;
+       spf=pass (google.com: domain of 3y2ueabukap4muumrk-mksoto-tuxkvr4muumrk.ius@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3Y2ueaBUKAP4muumrk-mksoto-tuxkvr4muumrk.ius@scoutcamp.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1755212643; x=1755817443; dara=google.com;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XquJRtlbRYxJ+1e5YXLaA2vBvItz+D/nxUzPofMRVMU=;
+        b=r+Tmjl4BHMXgk8+EIyBRym9iKrxEV/cTWffHPGWS2txhyOJp+F5cZZDajn7M2HEO8g
+         0iuTRfU05CVDHJU6qh1RwOpanOAIgrLB5kZdWPvlNvHQu/QCZQ/82Teqi30KElTux7JK
+         GCN33Uom6+tNtR2yrEt1T25ivtgqJ1SXDhGUSOKtMxyMve0Zk9GebQPzGbDeAb3OrvOE
+         QU730f7i8VMwBfnQARz8QmXqpJf5sJY+cfZoDIJ9ioDEnWCAuiM2nhmLtZ2d7HNdSDMK
+         95mOLAM00EiGWFRbrdnQP3F9nUJl94Gv4+6tkUay7pUa0jz06t7INh3URy+2xptpYwR7
+         DXKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1755212643; x=1755817443;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XquJRtlbRYxJ+1e5YXLaA2vBvItz+D/nxUzPofMRVMU=;
+        b=TBCOv+VEctRiEiMjqD33Vye0m7T+RIX6FZinvuuOGKIsG4IDBIwgkB3oio2/vWmgmh
+         AHuH/A2h3sZp1gSTMBU6uDXROpsGPHgRpX80hGY1P8mTUcdoOyalSpdQL7ECa1lfr9sS
+         McwcTHxwOt3ISUgOUpXwwXU4hrUTJVaiL7sLvzpsWI0D87JOOCABKA32SsFVpjm2S7uJ
+         tdITjfltlV+lSt+my2BzcaWLRHCBGOvarAWo19KXUOBf8iIluL4IntXdKtKc2HYeW4nl
+         Re2ex+G1fR/f8pn6A2dHvnZVhOPDyzfRF+aBK+luZOFdBR5xJGZZO7XR18ks9+qsCsMr
+         PCEA==
+X-Gm-Message-State: AOJu0YxWUgKFjnPFpC7y8hfo2xKXHHbgWmTEbD1w3qsq4f7T1Y6bxEp+
+	JyJhrh9sjl2bwQ/Yk2MoacCehkeuWw/J6v6P1jHaY5SqFx2GzLhmzB7eEE9w
+X-Google-Smtp-Source: AGHT+IG5vVxsOXZPNZ9yC+u6rZVdbWv4UxI77gYf6+X6O2UvToDVkvnl6RxPtX2khIx1oxuzx1Y2x+Q=
+MIME-Version: 1.0
+X-Received: by 2002:a05:690c:6485:b0:71c:403d:421d with SMTP id
+ 00721157ae682-71e6db0d2femr368937b3.24.1755212643787; Thu, 14 Aug 2025
+ 16:04:03 -0700 (PDT)
+Date: Thu, 14 Aug 2025 16:04:03 -0700
+Reply-To: Google Gemini <google-gemini-noreply@google.com>
+X-Google-Id: 4413132
+Feedback-ID: P-534839631-0:C20364530:M111000450-es-419:gamma
+X-Notifications: 0cc5d978f01a0000
+X-Notifications-Bounce-Info: AWoTSIG0KJ3QhpYfB_Y3CPAJ1E3qaITXh7q-H1UMUy0o8VV8bc2VaEf7bqhmBh1Ux54sn4UVYgPHa5Dh0VdFLTdPBxikgnStydV840jEUv8wKmN-0WnGwN4BkydVWEO7NyHIJmzdhtrXMc-q3QEV2lviWsOk3AcwPDSX-HM5_Hx8PjqDJhfACwPR3tuBjUxLR9KEYbyC8bQfUGs0NgDPmSD2lWvCsQdHqaj1Q60YAL0n6sFXngnGIxLj7Y9FwseGZazC5XEd7iacseFAFD8UQhBI4VmP0OUgwhVkbOih2yQFd58HNeqMMbYF-XvueSsSEM2FdAraYjAuSYEh5hFT50IB2cGUqIrMCY8gngpIYamKvKudRywbpa5hYhwDLecUbN_jVV0wL2sgYq2QtJay99MbFaxXUMKnD6XvcD2h32BiZ5Depsa6ZvvP4Ajl_XD8rvToKiD6HsekyyZ0AP4hYGOhWQ9FkI67zTWAbwNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <a3c107ae7602fc4f677831a212be75fbe7a5348e-20364530-111709449@google.com>
+Subject: Actualizaciones importantes en las Apps con Gemini
+From: Google Gemini <google-gemini-noreply@google.com>
+To: correo.x.temporal@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000236588063c5b4aa5"
+
+--000000000000236588063c5b4aa5
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+DQoNClByZXNlbnRhbW9zIGxvcyBjaGF0cyB0ZW1wb3JhbGVzIHkgbnVldm9zIGNvbnRyb2xlcyBk
+ZSBkYXRvcw0KDQpIb2xhIEFJOg0KDQpQYXJhIGF5dWRhcnRlIGEgYWRtaW5pc3RyYXIgdHVzIGRh
+dG9zIHkgbWFudGVuZXIgZWwgY29udHJvbCBzb2JyZSBlbGxvcywgIA0KcHJlc2VudGFtb3MgdW5h
+IG51ZXZhIGZ1bmNpw7NuIGVuIGxhcyBBcHBzIGNvbiBHZW1pbmkgbGxhbWFkYSBDaGF0ICANCnRl
+bXBvcmFsPGh0dHBzOi8vYy5nbGUvQU5pYW81cFJQS2NLS2NUbVUyalRJOEowa3N3aS1ENm1CM1Va
+cThidEFLT2RzM2xJZjVnUlJ0bjYwaVR6SXJNOUtVNVF2MnM4V2RWSWtCcUpENHgyNV9JZGs4bVZf
+MFNReUZCYXFlMkJPeXhUaXJvT1A2al80UWxEM2JJeG1pdGM3ZGlDRUc0b0ZBSDZmZ0tHUUs3dTVp
+S25VWktlZmNxbU5Mc1c2Tzhac1VDMUhvRFczVkUxPiAgDQp5IGFjdHVhbGl6YW1vcyB0dXMgY29u
+dHJvbGVzIGRlIGRhdG9zIGVuIGxhIEFjdGl2aWRhZCBlbiBsYXMgQXBwcyBjb24gIA0KR2VtaW5p
+PGh0dHBzOi8vYy5nbGUvQU5pYW81cDY2akJ4QTdKTU5vQlU2MC1fS3ZNdHNKRDhraDJlNWZCcXoy
+YVVNRmM2ajVXckhZOUg5Q05nQ1VGMXZ4c3E2cS1HZmh4RkFLQU5XX0hTdHBsOWtkNXNBRGJydWNw
+dnd2c29mYmZsZUJhSmd2akZYaGI4Nm9qZ25qZlNFRTZTT1cwM3VUUjdoWExhSUVPMzhQS0JtdVNp
+Z0Z0M01MQT4uDQoNCkNoYXRzIHRlbXBvcmFsZXM6IENvbiBlc3RhIG51ZXZhIGZ1bmNpw7NuIHF1
+ZSBzZSBsYW56YXLDoSBlbiBsb3MgcHLDs3hpbW9zICANCmTDrWFzLCBwb2Ryw6FzIGluaWNpYXIg
+csOhcGlkYW1lbnRlIHVuIG51ZXZvIGNoYXQgY29uIEdlbWluaSBxdWUgbm8gc2UgdXNhcsOhICAN
+CnBhcmEgcGVyc29uYWxpemFyIGNoYXRzIGZ1dHVyb3MgbmkgZW50cmVuYXIgbW9kZWxvcy4gTG9z
+IGNoYXRzIHRlbXBvcmFsZXMgIA0KdGFtcG9jbyBhcGFyZWNlcsOhbiBlbiBsb3MgQ2hhdHMgIA0K
+cmVjaWVudGVzPGh0dHBzOi8vYy5nbGUvQU5pYW81cjU3dGRYS2JSc3lrRUdCR0Y5QkU4NmRFMnh2
+dk5Ya3VmQnN0QnN1UWJhOW85NWlrMUd2d09BcEFtN3QweDEySS1pdk1DdjRVa1dYVFR1VndQaXdx
+WUgyWDVxbFBsUHdMc3lKS3YtU3dPU0Myc1FlU0ZLNW84aVVGdVZQYldPSWZVRF9CVlVOU09qem5a
+cnRaNDdLYloxNmtWbHhuMG1Ib3p6TWJQRnVPOTFpX2taNFE+ICANCm5pIGVuIGxhIEFjdGl2aWRh
+ZCBlbiBsYXMgQXBwcyBjb24gIA0KR2VtaW5pPGh0dHBzOi8vYy5nbGUvQU5pYW81cElNTXZqUzFt
+bXhDVEtGOHlZcWRraVRHZ2hrSmNOalRFRkhUalo4a19Ca2lwZnNrVDhOTDRlbHpDejRLVHFpaTNW
+SlpwNHV5cHA5NzNBMzk5RjJvWlBud1VTTUFLSlNCMXhvcWZrckFaNGFrWXRGX3ltU3dTd3ZDMmtU
+UzlvUUZ4dTQ4bDhmSmJNLVRZS3JrTG5uWWVlMTlGTFdCUT4uICANClNlIGd1YXJkYXLDoW4gZHVy
+YW50ZSA3MiBob3JhcyBwYXJhIHF1ZSBHZW1pbmkgcHVlZGEgcmVzcG9uZGVydGUgeSBwb3IgIA0K
+bW90aXZvcyBkZSBzZWd1cmlkYWQuIEFwcmVuZGUgYSBpbmljaWFyIHVuIGNoYXQgIA0KdGVtcG9y
+YWw8aHR0cHM6Ly9jLmdsZS9BTmlhbzVyRHQ5RS1LOEh1NnJXOXZaSG5NSG54LUZXdWNIeVVUVFlB
+MllzeVZtNXlIZWx1MEJXN3BrVXExSzlwOTY2aFl6MWgtQzBaU09IczUyVmh6LXJOeXVSSDg2RkhH
+ZG9MMU1rbkZmOEQ3N0xYdUlMNEVVZjBJNm1hNnM4Zmc4OTFyT3hGNU1STWlSVHZIeW9KRU95aUlo
+OXF3VEV1MWVGUm8zS09HOGd4Ti1RM0F2Y3lmaUVXanF4c0dkcz4uDQoNClR1cyBjYXJnYXM6IFRh
+bWJpw6luIGFjdHVhbGl6YXJlbW9zIG51ZXN0cmFzIHByw6FjdGljYXMgZGUgbWFuZWpvIGRlIGRh
+dG9zICANCnBhcmEgbGFzIGNhcmdhcy4gRW4gbGFzIHByw7N4aW1hcyBzZW1hbmFzLCBhY3R1YWxp
+emFyZW1vcyBlbCBub21icmUgZGVsICANCnBhcsOhbWV0cm8gZGUgY29uZmlndXJhY2nDs24gZGUg
+QWN0aXZpZGFkIGVuIGxhcyBBcHBzIGNvbiBHZW1pbmkgZW4gbGEgcMOhZ2luYSAgDQpBY3Rpdmlk
+YWQgZW4gbGFzIEFwcHMgY29uICANCkdlbWluaTxodHRwczovL2MuZ2xlL0FOaWFvNW9CU0l0cktG
+YnVNTG5IaV9zLTVWOWpCZ2hQd0JmYTJ3dUNUbmpGczFTOG1tQkxKMjFXNnVWeEt0TkY2dlJPWVlk
+MHhicTAtWmNqc1pGd1psRGVzUG1nei1jdUp5ekwtbk5xNngxNFo4eGs4a19DRUpyR2V2LU9kTF9i
+ZlZzUklHUFRKeXRqMmJzbTlhVjRBbHZXODFYbTBMN01rOWc+ICANCmEg4oCcQ29uc2VydmFyIGxh
+IGFjdGl2aWRhZOKAnS4gU2kgZXN0ZSBwYXLDoW1ldHJvIGRlIGNvbmZpZ3VyYWNpw7NuIGVzdMOh
+ICANCmFjdGl2YWRvLCBwb2Ryw6FzIHZlciB0dXMgY2hhdHMgYW50ZXJpb3JlcyBlbiBDaGF0cyBy
+ZWNpZW50ZXMgeSBlbiBBY3RpdmlkYWQgIA0KZW4gbGFzIEFwcHMgY29uIEdlbWluaSwgeSByZXRv
+bWFybG9zIGRvbmRlIGxvcyBkZWphc3RlIGVuIGN1YWxxdWllciAgDQptb21lbnRvLiBVbiBzdWJj
+b25qdW50byBkZSBsYXMgY2FyZ2FzIGVudmlhZGFzIGEgcGFydGlyIGRlbCAyIGRlICANCnNlcHRp
+ZW1icmUsIGNvbW8gYXJjaGl2b3MsIHZpZGVvcywgcGFudGFsbGFzIHNvYnJlIGxhcyBxdWUgIA0K
+cHJlZ3VudGVzPGh0dHBzOi8vYy5nbGUvQU5pYW81cm1BMGtGWWtYcTZSOVNjdG43QktGVWx0Sk5Q
+WEVQUkNsSVhBNzVkaFg4V3RSMHVXb3A2UXdwMU91R0RKSVV3MmdlOHJwOWJuamhNOW45V29WcUtT
+MUYzb1pjdTBmSVVjVjRrZ0w4ajVMc2JmT0ZpQlVDNnhONVI1ZVNNb0pwTjl2cWVPU2VXdm1XUHpk
+S1R2VDI2SE5fcmFNd0duNFR6MlZkV3drWlRtUEg1VzZwLUMzX0Q4V3pJTXc+ICANCnkgZm90b3Mg
+Y29tcGFydGlkYXMgY29uIEdlbWluaSwgdGFtYmnDqW4gc2UgdXNhcsOhIHBhcmEgYXl1ZGFyIGEg
+bWVqb3JhciBsb3MgIA0Kc2VydmljaW9zIGRlIEdvb2dsZSBwYXJhIHRvZGFzIGxhcyBwZXJzb25h
+cy4gUGFyYSBldml0YXIgZXN0bywgcHVlZGVzICANCmRlc2FjdGl2YXIgZWwgcGFyw6FtZXRybyBD
+b25zZXJ2YXIgbGEgIA0KYWN0aXZpZGFkPGh0dHBzOi8vYy5nbGUvQU5pYW81cjhFcUs0RUZYM1Y1
+QkxuckkyOWs5NU5rZjRLeF9MLU9PTDBJVlVkM1Q4U1JVR1NyWU5zZExoUVdoSllkd3pBNTFMaGE1
+d0JxMF9pdldLX3BPSTF6dWhPYS04c21ycDRLeU5lY0tiaXkwN0ZPUV9qeFQ3Qms1N29IQlZ6UE0w
+NGZOeVU4Vmo2d0tVX1RtS3hST1hPRnJOcVRKazFWMjVvbzVFUjdvckpKT2VMN2l5WlAwTkozWHVt
+MTRSUFRMLT4uICANClRhbWJpw6luIHB1ZWRlcyBhZG1pbmlzdHJhciB5ICANCmJvcnJhcjxodHRw
+czovL2MuZ2xlL0FOaWFvNXFfTEhldGh6WXNZZC15dElveF9JZjBsUmprZkU0dGFudlRFTmpSREpz
+S0VzWGI3VGRXeFpUaUwwclMxUXkybHQ2Z0pNNGNhdEJuOWxNTTAza0hwZHZwNmZIMS1YYUdPeUho
+Ul90bFRDaFQ2VHNkRTNBLVhETVhFbDFxdUdiazRmTXkxaVQzWXdyOHlFWkRNbEwtaHRqRURqY0M0
+TEQtTm1mZWR1UTdMYWM1R19EbHhHb2x3enZweF9jND4gIA0KdHUgYWN0aXZpZGFkIGVuIGN1YWxx
+dWllciBtb21lbnRvLiBBZGVtw6FzLCBzaSB0dSBwYXLDoW1ldHJvIGRlIGNvbmZpZ3VyYWNpw7Nu
+ICANCmRlIEFjdGl2aWRhZCBlbiBsYXMgQXBwcyBjb24gR2VtaW5pIGVzdMOhIGRlc2FjdGl2YWRv
+IGVuIGVzdGUgbW9tZW50bywgZWwgIA0KcGFyw6FtZXRybyBkZSBjb25maWd1cmFjacOzbiBDb25z
+ZXJ2YXIgbGEgYWN0aXZpZGFkIHBlcm1hbmVjZXLDoSBkZXNhY3RpdmFkbyBhICANCm1lbm9zIHF1
+ZSBsbyBhY3RpdmVzLg0KDQpUdXMgZ3JhYmFjaW9uZXMgZGUgYXVkaW8gZGUgR2VtaW5pIHkgZGUg
+R2VtaW5pIExpdmU6IENvbiBlc3RhIG51ZXZhICANCmNvbmZpZ3VyYWNpw7NuIHF1ZSBzZSBpbXBs
+ZW1lbnRhcsOhIGVuIGxhIEFjdGl2aWRhZCBlbiBsYXMgQXBwcyBjb24gR2VtaW5pIGVuICANCmxv
+cyBwcsOzeGltb3MgZMOtYXMsIHBvZHLDoXMgZWxlZ2lyIHNpIHF1aWVyZXMgbWVqb3JhciBsb3Mg
+c2VydmljaW9zIGRlIEdvb2dsZSAgDQpwYXJhIHRvZGFzIGxhcyBwZXJzb25hcyBjb24gdHVzIGdy
+YWJhY2lvbmVzIGRlIGF1ZGlvIGRlIEdlbWluaSB5IGRlIEdlbWluaSAgDQpMaXZlPGh0dHBzOi8v
+Yy5nbGUvQU5pYW81cF9yRnpWUnFCX3dEaWZnSE15RWZzd1NQblRFczVBWUJhMlBfRHE0X0ZZUE5X
+M0JxSmxtZFV6NU5Ib1MyZ3c1VEVORHVQeGlDemZIWjFVSmZ2dmN4VURUQlFYRXZFUExiVFlSUzlM
+dHRTV2hzd1JnWWpLS255eW16NzE4bTdnX19fcFB2SWZZdktOUzBkMXBhS1ByUlJzMVE+LiAgDQpF
+bCBhdWRpbyBkZSBHZW1pbmkgaW5jbHV5ZSBlbCBhdWRpbyByZWNvcGlsYWRvIGN1YW5kbyBoYWNl
+cyBjbGljIGVuIGVsICANCmJvdMOzbiBkZWwgbWljcsOzZm9uby4gTGFzIGdyYWJhY2lvbmVzIGRl
+IEdlbWluaSBMaXZlIGluY2x1eWVuIGF1ZGlvLCB2aWRlbyB5ICANCnBhbnRhbGxhcyAgDQpjb21w
+YXJ0aWRhczxodHRwczovL2MuZ2xlL0FOaWFvNXFBME96RTJCaEs1eUVpajM4M21weXFBTFBjQkZm
+Y2dNYVF4bXlBVzJMcFEtc1hfTzNMM3NaT0M2eU5rYk80OG1jeUJENFBOckMxUzRnX2NjbTFfZEZC
+N1BhblN2bS1HQ3pDbVJ6R1VjYi1NRWt4ZnAyQm9ZU0JacXdjUU14UEhxYVVXRnJSdWticF9KbE5X
+eHJMbFQxMXhQbEttNmxReDVkU01FRUZsa1dwR0ZjPi4gIA0KRXN0ZSBudWV2byBwYXLDoW1ldHJv
+IGRlIGNvbmZpZ3VyYWNpw7NuIGVzdMOhIGRlc2FjdGl2YWRvIGRlIGZvcm1hICANCnByZWRldGVy
+bWluYWRhLCBwZXJvIHB1ZWRlcyBhY3RpdmFybG8gZW4gY3VhbHF1aWVyICANCm1vbWVudG88aHR0
+cHM6Ly9jLmdsZS9BTmlhbzVybi1UcTJBRVJrUHFGU3ZlaEE2T3ZIWGxqeHZyejRQMGlVdjg3WWJ0
+TXlwQUtLS1BTWnVkOW0tQ0U1dmtuM3VWS2Z1WmdpY2U0cnFvSHhYM2JHNXBodmNoekZ6YWxBWjQt
+UlZMRDdoMEs1bi1VRUdIWHFETnlOLTJzRFNpQ1VGTTYtZ2k5VVBBLW90ZmI0OTlBQ2toa2hxd3lu
+TzZETHM0YlhseVBDeEFtRjREWGdjbU9NSTJTeWx3Pi4NCg0KQ29tbyBhbnRlcywgY3VhbmRvIEdv
+b2dsZSB1c2EgdHUgYWN0aXZpZGFkIHBhcmEgbWVqb3JhciBzdXMgc2VydmljaW9zICANCihpbmNs
+dWlkbyBlbCBlbnRyZW5hbWllbnRvIGRlIG1vZGVsb3MgZGUgSUEgZ2VuZXJhdGl2YSksIGN1ZW50
+YSBjb24gbGEgIA0KYXl1ZGEgZGUgcmV2aXNvcmVzIGh1bWFub3MuIFBhcmEgcHJvdGVnZXIgdHUg
+cHJpdmFjaWRhZCwgZGVzdmluY3VsYW1vcyBsb3MgIA0KY2hhdHMgZGUgdHUgY3VlbnRhIGFudGVz
+IGRlIGVudmlhcmxvcyBhIGxvcyBwcm92ZWVkb3JlcyBkZSBzZXJ2aWNpb3MuIEVuICANCmNvbnNv
+bmFuY2lhIGNvbiBudWVzdHJvcyBwcmluY2lwaW9zIGRlICANCnByaXZhY2lkYWQ8aHR0cHM6Ly9j
+LmdsZS9BTmlhbzVvYlFjN09JUzlyNFMxNmpmekJyb2dyQXBrVU4zVXRJemE1YjZtNG9VcjlTWTBk
+TV9EbE5WTnlfTG5ZTEVuTmJFaUNvcVc3UTdRSHE5M05hYXpiZzlXMVE1OGgyU1NvRF84MEZaeUR6
+ZlZYRi1sMThLVXRoWHF2TG9NYnFMcTl5T0xQRjBBeXcwdXVWU1pfREphYVVvaz4sICANCmNyZWFt
+b3MgcHJvdGVjY2lvbmVzIHTDqWNuaWNhcyBkZSBkYXRvcyBxdWUgcmVzZ3VhcmRhbiB5IGdhcmFu
+dGl6YW4gZWwgdXNvICANCnJlc3BvbnNhYmxlIGRlIGxvcyBkYXRvcywgeSB0ZSBwcm9wb3JjaW9u
+YW1vcyBoZXJyYW1pZW50YXMgcGFyYSBjb250cm9sYXIgIA0KdHUgZXhwZXJpZW5jaWEgY29uIEdl
+bWluaS4gUHVlZGVzIG9idGVuZXIgbcOhcyBpbmZvcm1hY2nDs24gZW4gZWwgQXZpc28gZGUgIA0K
+UHJpdmFjaWRhZCBkZSBsYXMgQXBwcyBjb24gIA0KR2VtaW5pPGh0dHBzOi8vYy5nbGUvQU5pYW81
+b0xtRHh6cHVMYXVyRFM1SWRPdWpkXy1wdGIyWVc3ajViVmplcEQzU0tzazlHUEJ1WWlxanVrc2lv
+OXh2TUthUU5vSTJ4UldzbEtFdS1JLUdvbFVXWURJbHloOWo1YzNwSnNIT3FaOU9PMXBJMmtoOEFn
+WTd5UExNTkRMVF90SGFzYXk3dGpMNnljNHdTazRzbDNOY081MFdtcjNyM3h1S2JIYWFzcDFuZzQt
+UzJUa3Y3aTQ1Unc2QzRma3o0R0p2dz4gIA0KeSBlbiBlbCBDZW50cm8gZGUgcHJpdmFjaWRhZCBk
+ZSBsYXMgQXBwcyBjb24gIA0KR2VtaW5pPGh0dHBzOi8vYy5nbGUvQU5pYW81cl9mWGxmVnZmMzF3
+aUNyWkJ3Ujg3VjFaVnpWbk9WMkhoN0ZDaW9odWNTYkFIWFRiT0RWQ3Fld0JlZ1RON1pmV0NtYnFf
+SnFKM09zQzlROF8yM3k2MTV1aVFQY3ZRWGpGQlRpdy1NRDRwelNlUHJxZzN4U0JhRGdsaVNHdmZJ
+QkFocHFOUVNXVFYtTmZsWWhyWlg5RlpZSWxOZHA2dUlXZ1pLay1OQVV1QmlRMlhPNFVGWldCZVhE
+ZlpJUjJBPi4gIA0KU2UgYXBsaWNhIGxhIFBvbMOtdGljYSBkZSBVc28gUHJvaGliaWRvIGRlIElB
+ICANCkdlbmVyYXRpdmFzPGh0dHBzOi8vYy5nbGUvQU5pYW81cHpob2p5OXlkT3VaLUVOM3FaOV9x
+V0JuZ1hHcXEtOGc4RktqUTZXaThjR19BaEhaTDMxTVNrRG5DU054Y1NzMzB0RzJGU2dxRnhVdHV6
+c09idFBvRURsWFhlOV9JUkZsb29fZ1B2TGtSVkhUbEt4RjNaaHc1S3QtdXdLcjNrRWxWbWx6bC1W
+TVhQZXk2b2hYbklybW5PV0t6WlB0TmVvMXE1RUFfNUtxb1B0dnE5Y0FLWjlvR2toLWpQR295NVhX
+TVQxdz4gIA0KZGUgR29vZ2xlLg0KDQpTYWx1ZG9zLA0KDQpFbCBlcXVpcG8gZGUgR2VtaW5pDQoN
+CsKpIDIwMjUgR29vZ2xlIExMQyAxNjAwIEFtcGhpdGhlYXRyZSBQYXJrd2F5LCBNb3VudGFpbiBW
+aWV3LCBDQSA5NDA0Mw0KDQpSZWNpYmlzdGUgZXN0ZSBhbnVuY2lvIG9ibGlnYXRvcmlvIGRlbCBz
+ZXJ2aWNpbyBwYXJhIG1hbnRlbmVydGUgYWwgdGFudG8gIA0Kc29icmUgYWxndW5vcyBjYW1iaW9z
+IGltcG9ydGFudGVzIHJlbGFjaW9uYWRvcyBjb24gR2VtaW5pLg0KDQo=
+--000000000000236588063c5b4aa5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+<!doctype html public "- / / w3c / / dtd xhtml 1.0 transitional / / en" "ht=
+tp: / / www.w3.org / tr / xhtml1 / dtd / xhtml1-transitional.dtd">
+<html xmlns=3Dhttp://www.w3.org/1999/xhtml xmlns:v=3Durn:schemas-microsoft-=
+com:vml xmlns:o=3Durn:schemas-microsoft-com:office:office dir=3Dltr lang=3D=
+es-419>
+<head>
+<meta charset=3Dutf-8>
+  <!--[if !mso]><!-->
+  <meta http-equiv=3DX-UA-Compatible content=3DIE=3Dedge>
+  <!--<![endif]-->
+  <meta name=3Dviewport content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+  <meta name=3Dviewport content=3D"width=3Ddevice-width; initial-scale=3D1;=
+">
+    <meta name=3Dcolor-scheme content=3D"light dark">
+<meta name=3Dsupported-color-schemes content=3D"light dark">
+   <meta name=3Dviewport content=3Dtarget-densitydpi=3Ddevice-dpi>
+   <meta name=3Dx-apple-disable-message-reformatting>
+  <link href=3Dhttps://fonts.googleapis.com/css?family=3DRoboto:400,bold,70=
+0 rel=3Dstylesheet>
+  <link href=3Dhttps://fonts.googleapis.com/css?family=3DGoogle+Sans:400,30=
+0,500,700>
+<style type=3Dtext/css>
+<!--[if mso]>=20
+<style>=20
+html, body, table, tr, td, div{=20
+font-family: Arial, sans-serif !important;
+}=20
+.mso_cstm{
+margin-top:100px;
+}
+</style>
+<![endif]-->
+<style> * {
+-webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+   -ms-text-size-adjust: 100%;
+   -webkit-text-size: 100%;
+   -ms-text-size: 100%;
+  }
+u + .body .gmail_hack{
+  display:block !important;
+  }
+table {
+  border-spacing: 0;
+  color: #444444;
+  font-family: Arial, sans-serif;
+  }
+  .desktop-only-br{display:table};
+</style>
+=20
+<style>
+@media only screen and (max-width: 950px){
+
+  .mob_outer_style {padding:0 16px 32px !important;}
+  .mob_inner_style {padding:28px 0px !important;}
+
+  .mobpaddall{
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }=20
+  .bulletpaddmob{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .desktop_only{
+    display:none !important;
+  }
+  .mob_custom{
+    padding-left:0px !important;
+  }
+  .wrap-inner{width:100% !important; max-width:100% !important;}
+  .wrap-inner11{width:100% !important; max-width:100% !important;}
+  .wrap-inner1{
+    width:90% !important;
+  }
+  .width_mob_inner{width:100%}
+  .hero_mob{width:100% !important;}
+  .mob_hide{display:none !important;}
+  .mob_show{width:100% !important; display:table!important; margin: 0 auto =
+!important;}
+  .device_sides{
+  background-size: 100% 100%!important;
+  background-position: top right !important; width: 3px !important;
+  }
+  .mob_mid{width:85%!important;}
+  .height_mob{height:25px !important;}
+  .width_mob{width: 90% !important;}
+  .mob_first_width{width: 90% !important;}
+  .mob_padding_cstm{padding-top:32px !important;}
+  .mob_divider{line-height: 0px !important;}
+  .mob_head{
+    padding-bottom:6px !important;
+    padding-left:25px !important;
+  }
+  .logo_mob_img{
+    padding-top:30px !important;
+    padding-bottom:30px !important;
+  }
+   .mob_subhead{
+    padding-bottom:0px !important;
+    padding-left:25px !important;
+  }
+  .list_mob1{
+    padding-left: 20px !important;
+    padding-bottom: 0px !important;
+  }
+  .box3_mob{
+    padding-top: 25px;
+    padding-left: 20px;
+    height: 55px !important;
+  }
+  .box3_mobile{
+    padding-left:24px !important;
+    padding-right:24px !important;
+  }
+  .mob_pad{
+    padding-left:12px !important;
+    padding-right:12px !important;
+    font-size:32px !important;
+    line-height:39px !important;
+  }
+  .mob_pad1{
+	padding-left:24px !important;
+    padding-right:24px !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+  }
+  .mob_pad_new{
+    padding-bottom:16px !important;
+  }
+ =20
+  .mob_pad_left{
+    padding-left:24px !important;
+   =20
+  }
+ =20
+  .mod_header1{
+    font-size: 32px !important;
+    line-height: 38px !important;
+  }
+  .mod_header1_LS{
+    letter-spacing: normal !important;
+  }
+  .mso_pad_left{
+    padding-left:0px !important;
+   =20
+  }
+ =20
+  .mob_pad_20{
+   padding-left:20px !important;
+    padding-right:20px !important;
+  }
+  .box3_cstm1{
+   height: 70px !important;
+    padding-right: 10px !important;
+  }
+  .box3_cstm2{
+     height: 60px !important;
+    padding-right: 10px !important;
+  }
+  .mob_dummy{background-repeat:repeat !important;}
+  .height_mobb{height:50px !important;}
+  .box2_pad{padding:6px 24px 6px 24px !important;}
+  .box2_lastbox{padding:6px 24px 0px 24px !important;}
+  .box2_mob_cstm{border-radius:24px !important;}
+  .box3_mob_cstm{border-radius:20px !important;}
+  .box1_mob1{
+    padding-top: 32px !important;
+    padding-left: 20px !important;
+  }
+  .box3_pad{
+    padding-left:24px !important;
+     padding-right:24px !important;
+  }
+  .box3_2ndbox{padding-bottom:18px !important;}
+  .box3_lastbox{padding-bottom:0px !important;}
+  .mob_footer{padding-left:24px !important;padding-right:24px !important;}
+  .box_3_padd{letter-spacing: normal !important;}
+  .mobpaddall{
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }=20
+  .bulletpaddmob{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .moblastpad{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+     }
+ =20
+    @media only screen and (max-width: 479px) and (min-width:361px){
+  .bullet_device{ padding-right: 2px !important; padding-top: 2px !importan=
+t;}
+  }
+  @media only screen and (max-width: 360px){
+  .bullet_device{ padding-left:3px !important; padding-right: 7px !importan=
+t; padding-top: 3px !important;}
+  }
+ =20
+  @media only screen and (max-width: 950px) and (min-width:480px){
+   .bullet_device{ padding-right: 5px !important;padding-left: 5px !importa=
+nt; padding-top: 3px !important; }
+  }
+  @media only screen and (max-width: 950px) and (min-width:480px) and (orie=
+ntation: landscape){
+   .bullet_device{ padding-right: 5px !important;padding-left: 5px !importa=
+nt; padding-top: 3px !important; }
+  }
+  </style>
+=20
+    <style>
+:root {
+  color-scheme: light dark;
+  supported-color-schemes: light dark;
+    }
+@media (prefers-color-scheme: dark ) {
+.wrap-inner { background-color: #000000 !important; }
+  div, table, td, center {
+    background-color: transparent !important;
+}
+  td, h1, h2, h3, h4, h5, h6, h7, p, div, .eaddress, .mob_footer {
+    color: #ffffff !important;
+}
+  .mob_footer span,.mob_footer{
+    color: #ffffff !important;
+  }
+
+ body {background-color: #272623 !important;}
+  .dm_gray_bg{background-color: #1e1e1e !important;}
+  .dm_black{background-color: #000000 !important;}
+}
+</style>
+</style>
+<title>Nuevas funciones y par=C3=A1metros de configuraci=C3=B3n</title>
+  </head>
+<body class=3Dwrapper style=3D"Margin:0;padding-top:0;padding-bottom:0; -we=
+bkit-text-size-adjust:100%; padding-right:0;padding-left:0; width:100%; dir=
+ection:ltr;" dir=3Dltr>
+<div style=3D"display:none; font-size:1px; color:#333333; line-height:10px;=
+ max-height:0px; max-width:0px; opacity:0; overflow:hidden;">Nuevas funcion=
+es y par=C3=A1metros de configuraci=C3=B3n para ayudarte a mantener el cont=
+rol de tus datos.</div>
+<div style=3D"font-size: 0px; line-height:0px; color: #ffffff; display: non=
+e;">=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0 </div>
+<center class=3Dwrapper-inner style=3Dwidth:100%;table-layout:fixed;-webkit=
+-text-size-adjust:100%;-ms-text-size-adjust:100%;>
+<section>
+<table role=3Dpresentation class=3Dwrap-inner cellspacing=3D0 cellpadding=
+=3D0 border=3D0 width=3D720 align=3Dcenter style=3D"border-spacing:0; borde=
+r:0; border-collapse:collapse; font-family:Roboto, Arial, sans-serif;color:=
+#444444;Margin:0 auto;width: 720px; max-width: 720px;  direction: ltr;">
+<tr>
+  <td bgcolor=3D#ffffff style=3D"margin-top:0; margin-bottom:0; margin-righ=
+t:0; margin-left:0;padding-top:0; padding-bottom:0; padding-right:0;padding=
+-left:0; border: 1px solid #B9BCBB; background-color:#F0F4FA;" class=3Dbord=
+er_mob>
+ =20
+
+<table class=3D"hero_mob mob_hide" role=3Dpresentation cellpadding=3D0 cell=
+spacing=3D0 border=3D0 width=3D100% style=3Dwidth:100%;>
+   <tr>
+      <td align=3Dcenter style=3D"margin-top:0; margin-bottom:0; margin-rig=
+ht:0; margin-left:0; padding-top:0; padding-bottom:0; padding-right:0;paddi=
+ng-left:0;">
+         <table class=3D"" role=3Dpresentation cellpadding=3D0 cellspacing=
+=3D0 border=3D0 width=3D100% style=3Dwidth:100%;>
+            <tr>
+             =20
+               <!--[if mso]>
+									 <td class=3D"logo_left_pad wrap-inner dm_gray_bg" align=3D"center=
+" style=3D"padding: 26px 0px 26px; mso-padding-alt: 20px 0px 20px 0px; widt=
+h:32px;">
+                  <img src=3D"https://www.gstatic.com/gumdrop/files/gemini-=
+spark-logo-static-transparent-w160px-h160px-2x.png" class=3D"logo_mob_img" =
+width=3D"28" style=3D"vertical-align:top;">
+               </td>
+								<![endif]-->
+								<!--[if !mso]><!-->
+									 <td class=3D"logo_left_pad wrap-inner dm_gray_bg" align=3Dcenter =
+style=3D"padding: 26px 0px 26px; mso-padding-alt: 20px 0px 20px 0px; width:=
+32px;">
+                  <img src=3Dhttps://www.gstatic.com/gumdrop/files/gemini-s=
+park-logo-gif-transparent-w90px-h90px-2x.gif class=3Dlogo_mob_img width=3D2=
+8 style=3Dvertical-align:top;>
+               </td>
+								<!--[endif]---->
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+<!--[if !mso]><!-->
+<table class=3D"mob_show wrap-inner" role=3Dpresentation cellpadding=3D0 ce=
+llspacing=3D0 border=3D0 width=3D100% style=3D"width:100%; display: none;">
+   <tr>
+      <td align=3Dcenter class=3Ddm_gray_bg style=3D"text-align: center;"><=
+img align=3Dcenter src=3Dhttps://www.gstatic.com/gumdrop/files/gemini-spark=
+-logo-gif-transparent-w90px-h90px-2x.gif class=3Dlogo_mob_img width=3D32 st=
+yle=3Dvertical-align:top;;width:32px;></td>
+   </tr>
+</table>
+<!--<![endif]-->
+
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 border=3D0 width=
+=3D100% style=3D"width:100; min-width: 100%">
+	<tr>
+		<td class=3D"mob_outer_style dm_gray_bg" style=3D"padding:0 40px 40px;">
+<table role=3Dpresentation cellpadding=3D0 cellspacing=3D0 border=3D0 width=
+=3D100% class=3Ddm_black style=3D"width:100%; background-color:#fff; border=
+-radius:24px;">
+	<tr>
+		<td class=3Dmob_inner_style style=3D"padding:40px 35px 24px 35px;">
+
+  <table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 r=
+ole=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td>
+         <table class=3Dwrap-inner dir=3Dltr cellpadding=3D0 cellspacing=3D=
+0 role=3Dpresentation width=3D562 style=3Dwidth:562px; align=3Dcenter>
+            <tr>
+               <td class=3D"mobpaddall dm_black" style=3D"margin-top:0; mar=
+gin-bottom:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:=
+0; padding-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;=
+Roboto&#39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;=
+ font-weight:400; color:#000000; text-align:left; padding-left:0px;padding-=
+right:0px; padding-bottom:16px;mso-padding-left-alt:0px;mso-padding-right-a=
+lt:0px;mso-padding-bottom-alt:16px;letter-spacing:0px;font-size:32px;line-h=
+eight:38px; font-weight:700; text-align: center; color:#000000;letter-spaci=
+ng:-0.32px; word-break:break-word; mso-hyphenate: none;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+Presentamos los chats temporales y nuevos controles de datos
+               </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+  <table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 r=
+ole=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td>
+         <table class=3Dwrap-inner dir=3Dltr cellpadding=3D0 cellspacing=3D=
+0 role=3Dpresentation width=3D562 style=3Dwidth:562px; align=3Dcenter>
+            <tr>
+               <td class=3D"mobpaddall dm_black" style=3D"margin-top:0; mar=
+gin-bottom:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:=
+0; padding-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;=
+Roboto&#39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;=
+ font-weight:400; color:#000000; text-align:left; padding-left:0px;padding-=
+right:0px; padding-bottom:16px;mso-padding-left-alt:0px;mso-padding-right-a=
+lt:0px;mso-padding-bottom-alt:16px;letter-spacing:0px;padding-bottom:16px; =
+mso-padding-bottom-alt:14px; word-break:break-word; mso-hyphenate: none;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+Hola AI:
+               </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+  <table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 r=
+ole=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td>
+         <table class=3Dwrap-inner dir=3Dltr cellpadding=3D0 cellspacing=3D=
+0 role=3Dpresentation width=3D562 style=3Dwidth:562px; align=3Dcenter>
+            <tr>
+               <td class=3D"mobpaddall dm_black" style=3D"margin-top:0; mar=
+gin-bottom:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:=
+0; padding-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;=
+Roboto&#39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;=
+ font-weight:400; color:#000000; text-align:left; padding-left:0px;padding-=
+right:0px; padding-bottom:16px;mso-padding-left-alt:0px;mso-padding-right-a=
+lt:0px;mso-padding-bottom-alt:16px;letter-spacing:0px; word-break:break-wor=
+d; mso-hyphenate: none;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+Para ayudarte a administrar tus datos y mantener el control sobre ellos, pr=
+esentamos una nueva funci=C3=B3n en las Apps con <span style=3D"white-space=
+: nowrap !important;">Gemini</span> llamada <a href=3Dhttps://c.gle/ANiao5q=
+NAf4XmenrMBpPPJ_yOY0zDz554HiWjmoPrWefzAGwZHiV-PWMJAA5L8P8MLMb5EEri95B7MJct0=
+0hBeARNQoLt5M6W3Zjvm6SB3wmg63FsSMWPk1MtcUqzS6Zxj43IiVVtBZsbj93YB4X2Y1-qKHEI=
+2BOffeyGvRT2yCgYtjeN0BWTGg target=3D_blank class=3Dmob_custom style=3D"colo=
+r:#078EFB; text-decoration:none !important;text-decoration:none; font-weigh=
+t:700; border:0; ;letter-spacing:normal;">Chat temporal</a> y actualizamos =
+tus controles de datos en la <a href=3Dhttps://c.gle/ANiao5rmDFtNuzs9DtQ2Lr=
+t-chx0A3xwc8YmUWl8bAf4JVPRresot5y5lqbmDF-VVTzbRpYe57W6z_9XTyjIZnZUdcTTMEoxw=
+lYU3B4X1-E3ZJ-GMSTEOZ6U2g4TDc7rP07JDw82S2cBjQzMMUDq8x9LxWApmkaBgmMFPQ targe=
+t=3D_blank class=3Dmob_custom style=3D"color:#078EFB; text-decoration:none =
+!important;text-decoration:none; font-weight:700; border:0; ;letter-spacing=
+:normal;">Actividad en las Apps <span style=3D"white-space: nowrap !importa=
+nt;">con Gemini</span></a>.
+               </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+         =20
+
+
+<table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 rol=
+e=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td class=3Dmobpaddall style=3Dpadding-bottom:14px;>
+         <table class=3Dwrap-inner cellpadding=3D0 cellspacing=3D0 role=3Dp=
+resentation width=3D720 style=3Dwidth:560px;width:570px; align=3Dcenter>
+            <tr>
+               <td valign=3Dtop class=3Dbullet_device style=3D"margin:0; pa=
+dding:0;
+                  vertical-align:top; width:23px !important; text-align:cen=
+ter; color:#000000;font-weight:700; mso-margin-top-alt: 5px;mso-padding-lef=
+t-alt:10px; padding-top:3px !important;" width=3D23>=E2=80=A2</td>
+               <td class=3Dbulletpaddmob style=3D"margin-top:0; margin-bott=
+om:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:0; paddi=
+ng-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;Roboto&#=
+39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;font-wei=
+ght:400; color:#000000;text-align:left;padding-top:2px; mso-padding-bottom-=
+alt:2px; padding-left:0px;padding-right:0px;leter-spacing: 0px;mso-padding-=
+left-alt:5px;mso-padding-right-alt:5px;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+<span style=3D"font-weight: bold !important;">Chats temporales:</span> Con =
+esta nueva funci=C3=B3n que se lanzar=C3=A1 en los pr=C3=B3ximos d=C3=ADas,=
+ podr=C3=A1s iniciar r=C3=A1pidamente un nuevo chat con <span style=3D"whit=
+e-space: nowrap !important;">Gemini</span> que no se usar=C3=A1 para person=
+alizar chats futuros ni entrenar modelos. Los chats temporales tampoco apar=
+ecer=C3=A1n en los <a href=3Dhttps://c.gle/ANiao5qr0lDBsOGY26sK7M3fGGMEX9ar=
+T4W1prj__4oUWb9MvSBkypxGyHZTB4qeiJoIs7mZaGHg2BPKVlM4ukDRUbCFYZP3mbVy1mfP4EV=
+dIcZ7cDFNg1zTyz1MWoGuveWDqmRURqv2-If9plbRddqazjJsp_sRkQPg-0wsA-aFSeB2BsE0lX=
+iz target=3D_blank class=3Dmob_custom style=3D"color:#078EFB; text-decorati=
+on:none !important;text-decoration:none; font-weight:700; border:0; ;letter=
+-spacing:normal;">Chats recientes</a> ni en la <a href=3Dhttps://c.gle/ANia=
+o5oAzcwR1cVrvm6X7LSthqM_1KP0futv3rPGP6SOAzAudOCHU1aCWlSyNebT9jXzWWggAye0_zY=
+PemtTywnFe3QPLZEi1A_J-zFrC8VZit7hGSBVGfHF_Qd2eJFLGdZIiFuHnfQVkwV4rAogfBnAng=
+NGqPbokZjwEw target=3D_blank class=3Dmob_custom style=3D"color:#078EFB; tex=
+t-decoration:none !important;text-decoration:none; font-weight:700; border:=
+0; ;letter-spacing:normal;">Actividad en las Apps con <span style=3D"white-=
+space: nowrap !important;">Gemini</span></a>. Se guardar=C3=A1n durante 72 =
+horas para que <span style=3D"white-space: nowrap !important;">Gemini</span=
+> pueda responderte y por motivos de seguridad. <a href=3Dhttps://c.gle/ANi=
+ao5pKGuhvkZoILl7ZOHiQZ_LaLv6f9sJfW2noNYIRFVcqEyJjcIGULJ7zjmoMeq6iGRdE9Soe-D=
+1b_J0_S5gOHm0kozgI-A7PSURyJFINzMNa0ITWtG9P77jlfqzhTFMxzxvgXFII_j5jd1N5PMGXi=
+O-E9d34DYG_NiLV1LYOn0p2E5DNoRfhTPKRyTBGiw target=3D_blank class=3Dmob_custo=
+m style=3D"color:#078EFB; text-decoration:none !important;text-decoration:n=
+one; font-weight:700; border:0; ;letter-spacing:normal;">Aprende a iniciar =
+un <span style=3D"white-space: nowrap !important;">chat temporal</span></a>=
+.
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+
+<table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 rol=
+e=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td class=3Dmobpaddall style=3Dpadding-bottom:14px;>
+         <table class=3Dwrap-inner cellpadding=3D0 cellspacing=3D0 role=3Dp=
+resentation width=3D720 style=3Dwidth:560px;width:564px; align=3Dcenter>
+            <tr>
+               <td valign=3Dtop class=3Dbullet_device style=3D"margin:0; pa=
+dding:0;
+                  vertical-align:top; width:23px !important; text-align:cen=
+ter; color:#000000;font-weight:700; mso-margin-top-alt: 5px;mso-padding-lef=
+t-alt:10px; padding-top:3px !important;" width=3D23>=E2=80=A2</td>
+               <td class=3Dbulletpaddmob style=3D"margin-top:0; margin-bott=
+om:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:0; paddi=
+ng-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;Roboto&#=
+39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;font-wei=
+ght:400; color:#000000;text-align:left;padding-top:2px; mso-padding-bottom-=
+alt:2px; padding-left:0px;padding-right:0px;leter-spacing: 0px;mso-padding-=
+left-alt:5px;mso-padding-right-alt:5px;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+<span style=3D"font-weight: bold !important;">Tus cargas:</span> Tambi=C3=
+=A9n actualizaremos nuestras pr=C3=A1cticas de manejo de datos para las car=
+gas. En las pr=C3=B3ximas semanas, actualizaremos el nombre del par=C3=A1me=
+tro de configuraci=C3=B3n de Actividad en las Apps con <span style=3D"white=
+-space: nowrap !important;">Gemini</span> en la p=C3=A1gina <a href=3Dhttps=
+://c.gle/ANiao5rkMfRqzFnoE3dxSG3M6J4JIPV8gaRMGu6rw1JWsx3LGvXugegmS-9-pAVdBu=
+WSU2ySMgJvhXyhG2wiHnOk9LR-JNwol-hEtwgLwFRUKW9zYfTUuanTwrgtU6gnnpa5pJ3aUm_Qa=
+BWtiK7hkPGq6pLygTAdc4PeQQ target=3D_blank class=3Dmob_custom style=3D"color=
+:#078EFB; text-decoration:none !important;text-decoration:none; font-weight=
+:700; border:0; ;letter-spacing:normal;">Actividad en las Apps con <span st=
+yle=3D"white-space: nowrap !important;">Gemini</span></a> a =E2=80=9CConser=
+var la actividad=E2=80=9D. Si este par=C3=A1metro de configuraci=C3=B3n est=
+=C3=A1 activado, podr=C3=A1s ver tus chats anteriores en Chats recientes y =
+en Actividad en las Apps con <span style=3D"white-space: nowrap !important;=
+">Gemini</span>, y retomarlos donde los dejaste en cualquier momento. Un su=
+bconjunto de las cargas enviadas a partir del <span style=3D"white-space: n=
+owrap !important;">2 de septiembre,</span> como archivos, videos, <a href=
+=3Dhttps://c.gle/ANiao5rNeBc3GjXgGlEUfZx7e5ipS5JA0ffm449bg8-DB6oSSKKDNBm163=
+nSeT4ugh-5LnCD_2u-Mpuq5BepSuLg4etE9DDkaOpdFQJSucjJU8NjJiHXW_hqlWbup5AqpAlNY=
+QjuVZqQvZyhMm-DJ-c4-JnYlvspRMrsq-FTM83Iod1bRHM-JF95c7XNX-sw9A target=3D_bla=
+nk class=3Dmob_custom style=3D"color:#078EFB; text-decoration:none !importa=
+nt;text-decoration:none; font-weight:700; border:0; ;letter-spacing:normal;=
+">pantallas sobre las que preguntes</a> y fotos compartidas con <span style=
+=3D"white-space: nowrap !important;">Gemini</span>, tambi=C3=A9n se usar=C3=
+=A1 para ayudar a mejorar los servicios de <span style=3D"white-space: nowr=
+ap !important;">Google</span> para todas las personas. Para evitar esto, pu=
+edes <a href=3Dhttps://c.gle/ANiao5o0cFvNARHaB-N5lXVbaKEDAOuKRZiKrYJG1Ko9eM=
+2XxNMOUCzGa2oBfdvJnFVls7dl0elhg_PVhQJlY61Vg-YaCXzCPSh_3EnZsirkodbti4ma0bo6g=
+yekxl2GcTLJ-8e1c7viM-RVNQTrh_4iUMxNEq55tUN4rvas1bUSrPNVVKF55lJUdMwxaFivE4xC=
+E-Y target=3D_blank class=3Dmob_custom style=3D"color:#078EFB; text-decorat=
+ion:none !important;text-decoration:none; font-weight:700; border:0; ;lette=
+r-spacing:normal;">desactivar el par=C3=A1metro Conservar la actividad</a>.=
+ Tambi=C3=A9n puedes <a href=3Dhttps://c.gle/ANiao5pivC9qcHqCizlk16VspH4zWc=
+CEEE8W3wTkP_c2Pb7_Mly6mU-2KXFMK50OIseBngQyUA7V64R62j7ofoxSVcEzvWV1D9v--WiBf=
+ojz024zQcRqbDtrGGOj7UM-AdF5APcH1PVVSXIzSNyhJeXIHDXOFeNnJ7Taf--ouX-6ugKTApKN=
+pUR0un-C7sWLPwk target=3D_blank class=3Dmob_custom style=3D"color:#078EFB; =
+text-decoration:none !important;text-decoration:none; font-weight:700; bord=
+er:0; ;letter-spacing:normal;">administrar y borrar</a> tu actividad en cua=
+lquier momento. Adem=C3=A1s, si tu par=C3=A1metro de configuraci=C3=B3n de =
+Actividad en las Apps con <span style=3D"white-space: nowrap !important;">G=
+emini</span> est=C3=A1 desactivado en este momento, el par=C3=A1metro de co=
+nfiguraci=C3=B3n Conservar la actividad permanecer=C3=A1 desactivado a meno=
+s que lo actives.
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+
+<table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 rol=
+e=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td class=3Dmobpaddall style=3Dpadding-bottom:14px;>
+         <table class=3Dwrap-inner cellpadding=3D0 cellspacing=3D0 role=3Dp=
+resentation width=3D720 style=3Dwidth:560px;width:568px; align=3Dcenter>
+            <tr>
+               <td valign=3Dtop class=3Dbullet_device style=3D"margin:0; pa=
+dding:0;
+                  vertical-align:top; width:23px !important; text-align:cen=
+ter; color:#000000;font-weight:700; mso-margin-top-alt: 5px;mso-padding-lef=
+t-alt:10px; padding-top:3px !important;" width=3D23>=E2=80=A2</td>
+               <td class=3Dbulletpaddmob style=3D"margin-top:0; margin-bott=
+om:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:0; paddi=
+ng-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;Roboto&#=
+39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;font-wei=
+ght:400; color:#000000;text-align:left;padding-top:2px; mso-padding-bottom-=
+alt:2px; padding-left:0px;padding-right:0px;leter-spacing: 0px;mso-padding-=
+left-alt:5px;mso-padding-right-alt:5px;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+<span style=3D"font-weight: bold !important;">Tus grabaciones de audio de <=
+span style=3D"white-space: nowrap !important;">Gemini</span> y de <span sty=
+le=3D"white-space: nowrap !important;">Gemini</span> Live: </span>Con esta =
+nueva configuraci=C3=B3n que se implementar=C3=A1 en la Actividad en las Ap=
+ps con <span style=3D"white-space: nowrap !important;">Gemini</span> en los=
+ pr=C3=B3ximos d=C3=ADas, podr=C3=A1s elegir si quieres mejorar los servici=
+os de <span style=3D"white-space: nowrap !important;">Google</span> para to=
+das las personas con tus grabaciones de audio de <span style=3D"white-space=
+: nowrap !important;">Gemini</span> y de <a href=3Dhttps://c.gle/ANiao5qhf5=
+Bv-eRXzBoTtHxsPVWeykcwvLnFU1jpRuWOgSCjnTMglhK3K41Sp5Cj4X4WnQBytcmlDs2wS-Llk=
+rdrsyq2eE8m0j74iuTie7XSBPZwudGvuaa6SwUfGcyInUaOG-FVvOmj7CYFL14-23eHgnDHf70Z=
+ target=3D_blank class=3Dmob_custom style=3D"color:#078EFB; text-decoration=
+:none !important;text-decoration:none; font-weight:700; border:0; ;letter-s=
+pacing:normal;"><span style=3D"white-space: nowrap !important;">Gemini</spa=
+n> Live</a>. El audio de <span style=3D"white-space: nowrap !important;">Ge=
+mini</span> incluye el audio recopilado cuando haces clic en el bot=C3=B3n =
+del micr=C3=B3fono. Las grabaciones de <span style=3D"white-space: nowrap !=
+important;">Gemini</span> Live incluyen audio, <a href=3Dhttps://c.gle/ANia=
+o5ozHGTwNNMA-IF7VWakHc6_0Y511zp5DtbtCo73dSRFLHxuI2FnvgK7h1H7AMRIeepj3R9mq6y=
+_5SRON9t9uawg5Kg262mSwWQTL0MrIXPGja15aPmStA_DY6s_80HjF3NDZkrMpMbTgSaf-ZqTlm=
+CO1c3keqX3V1XdHjHJaPMzaSYPxw target=3D_blank class=3Dmob_custom style=3D"co=
+lor:#078EFB; text-decoration:none !important;text-decoration:none; font-wei=
+ght:700; border:0; ;letter-spacing:normal;">video y pantallas compartidas</=
+a>. Este nuevo par=C3=A1metro de configuraci=C3=B3n est=C3=A1 desactivado d=
+e forma predeterminada, pero puedes <a href=3Dhttps://c.gle/ANiao5pKRLZ_tDa=
+pe32CJvl0GQOWVBvmIG1msdbhZE1M3XtiunebPI8OZfrVsG21dBf75xgvei0v_BUtzt329l8DTM=
+YXO5ES98loi1JhhQS2TdHbFYdO3MspZr6JHPn_5F1Mm9khPdkZwpu7JWDOyXBm4Yo2d4F9fUV8q=
+_HD17vYRGjljYhz6Niyoc5nsQbC target=3D_blank class=3Dmob_custom style=3D"col=
+or:#078EFB; text-decoration:none !important;text-decoration:none; font-weig=
+ht:700; border:0; ;letter-spacing:normal;">activarlo en cualquier momento</=
+a>.
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+
+  <table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 r=
+ole=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td>
+         <table class=3Dwrap-inner dir=3Dltr cellpadding=3D0 cellspacing=3D=
+0 role=3Dpresentation width=3D562 style=3Dwidth:562px; align=3Dcenter>
+            <tr>
+               <td class=3D"mobpaddall dm_black" style=3D"margin-top:0; mar=
+gin-bottom:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:=
+0; padding-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;=
+Roboto&#39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;=
+ font-weight:400; color:#000000; text-align:left; padding-left:0px;padding-=
+right:0px; padding-bottom:16px;mso-padding-left-alt:0px;mso-padding-right-a=
+lt:0px;mso-padding-bottom-alt:16px;letter-spacing:0px; word-break:break-wor=
+d; mso-hyphenate: none;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+Como antes, cuando Google usa tu actividad para mejorar sus servicios (incl=
+uido el entrenamiento de modelos de IA generativa), cuenta con la ayuda de =
+revisores humanos. Para proteger tu privacidad, desvinculamos los chats de =
+tu cuenta antes de enviarlos a los proveedores de servicios. En consonancia=
+ con nuestros <a href=3Dhttps://c.gle/ANiao5qFjxU1keOmI3O7ym8EJtKsUi9s1wrWc=
+vSXUac0HAAz20l4pZt4ez5zA5gDy2JozHB4kdgQBl0fON0SAF1GSEbELDHuOxdGzRrQMtEIh0dd=
+TZi-yK3fzSASSdMWhessPRNygROxfjxQmD5PlGHM8fxnNw target=3D_blank class=3Dmob_=
+custom style=3D"color:#078EFB; text-decoration:none !important;text-decorat=
+ion:none; font-weight:700; border:0; ;letter-spacing:normal;">principios de=
+ privacidad</a>, creamos protecciones t=C3=A9cnicas de datos que resguardan=
+ y garantizan el uso responsable de los datos, y te proporcionamos herramie=
+ntas para controlar tu experiencia con <span style=3D"white-space: nowrap !=
+important;">Gemini</span>. Puedes obtener m=C3=A1s informaci=C3=B3n en el <=
+a href=3Dhttps://c.gle/ANiao5qlr-ImjQFJ13JMY27IhMDS5qu5LTNATVjDMmuIMPCpvGGt=
+WicV-6k3zAxsRAlrVhE5LMYJiXfvaDYg82NlA_aRbC5PqSCK5e01eq2wHL8OL8e3EgQJUZdvj4d=
+QEqUUa3XIK3QsBBJUTUezINr0aW9KqFabXYLNVyL5-LDYD5KOmgSzMBCNLpio23aBDo0p7tRe7w=
+ target=3D_blank class=3Dmob_custom style=3D"color:#078EFB; text-decoration=
+:none !important;text-decoration:none; font-weight:700; border:0; ;letter-s=
+pacing:normal;">Aviso de Privacidad de las Apps con <span style=3D"white-sp=
+ace: nowrap !important;">Gemini</span></a> y en el <a href=3Dhttps://c.gle/=
+ANiao5qsN_-R_HA8u0CDBZ7ADmPZYS2hHYM4U2fGfPY2pYWnThj8Bxw5HrJT9PoNzk_-3YjQJbj=
+lfxpeRtqcTmyq9b7EXjwf9-Y6EYGhs4HXiT0wfxKWGVD6KD0cMwY1Z2ElwPWI1qXU5Eme63BcDU=
+ROryTGVA3JgZNqr9ZW0--oORSmSj8x8RycZHTcqDpxj2kyEA target=3D_blank class=3Dmo=
+b_custom style=3D"color:#078EFB; text-decoration:none !important;text-decor=
+ation:none; font-weight:700; border:0; ;letter-spacing:normal;">Centro de p=
+rivacidad de las Apps con <span style=3D"white-space: nowrap !important;">G=
+emini</span></a>. Se aplica la <a href=3Dhttps://c.gle/ANiao5ol3_TfPxkn4FMv=
+faum6a-bMV0NhyABhHlw9RPCoPopYIzh8Hk58LeZjVBc3cRLWbMGzi7bRhFPxWMk_zvXrIQmFtc=
+kDU979QVzYGY32D8KXzNqqYV4YQlAmzeGw5TqxSZMtllq3tvxWT_QkoTGs_cikuMwRidh09-HRl=
+qMipsVPdflHHEgzNgRybkL03yTU0XMZaIG target=3D_blank class=3Dmob_custom style=
+=3D"color:#078EFB; text-decoration:none !important;text-decoration:none; fo=
+nt-weight:700; border:0; ;letter-spacing:normal;">Pol=C3=ADtica de Uso Proh=
+ibido de IA Generativas</a> <span style=3D"white-space: nowrap !important;"=
+>de Google.</span>
+               </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+         =20
+  <table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 r=
+ole=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td>
+         <table class=3Dwrap-inner dir=3Dltr cellpadding=3D0 cellspacing=3D=
+0 role=3Dpresentation width=3D562 style=3Dwidth:562px; align=3Dcenter>
+            <tr>
+               <td class=3D"mobpaddall dm_black" style=3D"margin-top:0; mar=
+gin-bottom:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:=
+0; padding-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;=
+Roboto&#39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;=
+ font-weight:400; color:#000000; text-align:left; padding-left:0px;padding-=
+right:0px; padding-bottom:16px;mso-padding-left-alt:0px;mso-padding-right-a=
+lt:0px;mso-padding-bottom-alt:16px;letter-spacing:0px;padding-bottom:2px;ms=
+o-padding-bottom-alt:2px; word-break:break-word; mso-hyphenate: none;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+Saludos,
+               </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+
+  <table align=3Dcenter bgcolor=3D#ffffff cellpadding=3D0 cellspacing=3D0 r=
+ole=3Dpresentation class=3Dwrap-inner style=3Dbackground-color:#ffffff;>
+   <tr>
+      <td>
+         <table class=3Dwrap-inner dir=3Dltr cellpadding=3D0 cellspacing=3D=
+0 role=3Dpresentation width=3D562 style=3Dwidth:562px; align=3Dcenter>
+            <tr>
+               <td class=3D"mobpaddall dm_black" style=3D"margin-top:0; mar=
+gin-bottom:0; margin-right:0; margin-left:0; padding-top:0; padding-bottom:=
+0; padding-right:0;padding-left:0; font-family:&#39;Google sans&#39;, &#39;=
+Roboto&#39;, Arial, Helvetica, sans-serif; font-size:14px;line-height:21px;=
+ font-weight:400; color:#000000; text-align:left; padding-left:0px;padding-=
+right:0px; padding-bottom:16px;mso-padding-left-alt:0px;mso-padding-right-a=
+lt:0px;mso-padding-bottom-alt:16px;letter-spacing:0px; word-break:break-wor=
+d; mso-hyphenate: none;">
+                  <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->=
+El equipo de Gemini
+               </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+		</td>
+	</tr>
+</table>
+		</td>
+	</tr>
+</table>
+
+  <table role=3Dpresentation align=3Dcenter class=3D"width-100 table-gray d=
+m_black" cellpading=3D0 cellspacing=3D0 style=3D"width:100%; background-col=
+or:#fff;">
+    <tr>
+      <td class=3Dmob_footer dir=3Dltr style=3D"width:100%; padding-top:40p=
+x; padding-bottom:11px; text-align:center;">
+        <img width=3D62.22 src=3Dhttps://www.gstatic.com/gumdrop/files/gemi=
+ni-l-28-footer-google-logo-transparent-w253px-h80px-2x.png border=3D0 style=
+=3D"border:none; outline:none; font-size: 8px; color:#3C4043;">
+      </td>
+    </tr>
+  <tr>
+    <td class=3Dmob_footer style=3D"width:100%;table-layout:fixed;font-fami=
+ly:&#39;Google sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;fo=
+nt-size:8px;line-height:12px;font-weight:400;word-break:break-word;color: #=
+000000; padding-left:140px; padding-right:140px; padding-bottom:16px;paddin=
+g-top:0px;text-align:center;" dir=3Dltr class=3Dtext-gray>
+    <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]--><a style=3D"co=
+lor:#000000;cursor: text !important;pointer-events: none !important;">
+      <span style=3D"font-size:inherit; color:inherit; font-weight:inherit;=
+ line-height:inherit; font-family:inherit;">=C2=A9 2025 Google LLC<br>1600 =
+Amphitheatre Parkway,<br>Mountain View, CA 94043</span>
+  =20
+  =20
+</a>
+    </td>
+  </tr>
+  <tr>
+    <td class=3Dmob_footer style=3D"width:100%;table-layout:fixed;font-fami=
+ly: &#39;Google sans&#39;, &#39;Roboto&#39;, Arial, Helvetica, sans-serif;f=
+ont-size:8px;line-height:12px;font-weight:400; color: #000000; padding-left=
+:146px; padding-right:143px; padding-bottom:40px; text-align:center;directi=
+on:ltr;" class=3Dtext-gray>
+    <!--[if mso]><font face=3D"Arial,sans-serif"><![endif]-->Recibiste este=
+ anuncio obligatorio del servicio para mantenerte al tanto sobre algunos ca=
+mbios importantes relacionados <!--[if gte mso 9]><br><![endif]--><span sty=
+le=3D"white-space: nowrap !important;">con Gemini.</span>
+    </td>
+  </tr>
+  </table>
+
+ </td>
+  </tr>
+  </table>
+  </section>
+  </center>
+  <img alt=3D"" height=3D1 width=3D3 src=3Dhttps://notifications.google.com=
+/g/img/ANiao5okzOxBEcIkAA6YzYHvqSGX4zRPV9oUrF1iRgFOWk-j8815L7cCGsyW4AK_KOr2=
+gyS0UlCJ1R9b1kD38pKCgF8ufVV0J2KRcgtDiZxi9JRERgboo5mPoZ2LVV9zB1f95WPLvA.gif>=
+</body>
+  </html>
+
+--000000000000236588063c5b4aa5--

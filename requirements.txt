@@ -1,0 +1,44 @@
+# =============================
+# Core científico / ML
+# =============================
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0
+joblib>=1.3.0
+
+# =============================
+# Procesamiento de correos (.eml)
+# =============================
+beautifulsoup4>=4.12.0
+tldextract>=3.4.0
+lxml>=4.9.0
+html5lib>=1.1
+python-magic>=0.4.27
+email-validator>=2.1.0
+
+# =============================
+# NLP y Chatbot educativo
+# =============================
+nltk>=3.8.1
+
+# =============================
+# Utilidades generales
+# =============================
+PyYAML>=6.0.1
+requests>=2.31.0
+python-dotenv>=1.0.1
+
+# =============================
+# Web / API
+# =============================
+Flask>=3.0.0
+gunicorn>=21.2.0
+
+# =============================
+# Desarrollo y pruebas
+# =============================
+#pytest>=7.4.0
+#pytest-cov>=4.1.0
+
+PySide6~=6.10.0
+matplotlib~=3.10.7

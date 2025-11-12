@@ -1,0 +1,61 @@
+/* static/style.css - conservé paleta y estilos semejantes a PySide */
+:root{
+  --purple-600: #6366f1;
+  --purple-700: #4f46e5;
+  --bg: #ffffff;
+  --muted: #6b7280;
+}
+
+*{box-sizing:border-box}
+body,html{height:100%;margin:0;font-family: "Segoe UI", Roboto, Arial, sans-serif;background:var(--bg);color:#111827}
+
+.header{
+  height: 80px;
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  display:flex;
+  align-items:center;
+  padding: 0 30px;
+}
+.title{font-size:22px;font-weight:700}
+.subtitle{font-size:13px;opacity:0.9;margin-top:4px;color:rgba(255,255,255,0.9)}
+
+.app{display:flex;flex-direction:column;height:100vh}
+
+.main{flex:1;overflow:auto;padding:20px;background:#ffffff}
+.chat-area{display:flex;flex-direction:column;gap:10px;max-width:900px;margin:0 auto}
+
+.message-row{display:flex;width:100%}
+.msg-bubble{max-width:70%;padding:12px 15px;border-radius:12px;font-size:14px;line-height:1.4;box-shadow:0 1px 0 rgba(0,0,0,0.03)}
+.sender-label{font-size:12px;font-weight:700;color:var(--purple-600);margin-bottom:6px}
+
+/* Bot bubble */
+.bot-wrap{justify-content:flex-start}
+.bot-bubble{background:#f3f4f6;border-left:3px solid var(--purple-600);}
+
+/* User bubble */
+.user-wrap{justify-content:flex-end}
+.user-bubble{background:#dbeafe;border-right:3px solid #3b82f6}
+
+/* Input area */
+.input-area{
+  display:flex;
+  gap:10px;
+  padding:15px 20px;
+  border-top:1px solid #e5e7eb;
+  background:#f9fafb;
+  align-items:center;
+}
+#inputField{flex:1;padding:12px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px}
+#inputField:focus{outline:none;border-color:var(--purple-600)}
+.btn{padding:10px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--purple-600);color:#fff}
+.btn.primary:hover{background:var(--purple-700)}
+.btn.success{background:#10b981;color:#fff}
+.btn.success:hover{background:#059669}
+
+/* small screens */
+@media (max-width:600px){
+  .chat-area{padding-bottom:10px}
+  .msg-bubble{max-width:85%}
+}

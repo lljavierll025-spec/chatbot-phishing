@@ -1,0 +1,17 @@
+{"group":"google","scope":"org","require_auth":["dkim","dmarc"],
+ "domains":["google.com","gmail.com","googlemail.com","g.co","c.gle","youtube.com","yt.be","1e100.net","googleapis.com","android.com","withgoogle.com"]}
+
+{"group":"microsoft","scope":"org","require_auth":["dkim","dmarc"],
+ "domains":["microsoft.com","outlook.com","office.com","office365.com","microsoftonline.com","live.com"]}
+
+{"group":"apple","scope":"org","require_auth":["dkim","dmarc"],
+ "domains":["apple.com","icloud.com","me.com"]}
+
+{"group":"gob-mx","scope":"subtree","require_auth":["dkim","dmarc"],
+ "domains":["gob.mx"]}
+
+{"group":"edu-mx","scope":"org","require_auth":["dkim","dmarc"],
+ "domains":["unam.mx","ipn.mx","tec.mx"]}
+
+{"group":"banking-mx","scope":"org","require_auth":["dkim","dmarc"],
+ "domains":["bbva.mx","santander.com.mx","citibanamex.com","banorte.com","hsbc.com.mx"]}

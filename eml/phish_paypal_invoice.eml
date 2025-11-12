@@ -1,0 +1,39 @@
+Return-Path: <no-reply@mailer-invoices.net>
+Received: from mailer-invoices.net (198.51.100.20) by mx.example.com; Wed, 22 Oct 2025 12:34:56 +0000
+Authentication-Results: mx.example.com; spf=neutral smtp.mailfrom=mailer-invoices.net; dkim=none; dmarc=none
+From: PayPal <service@paypal.com>
+Reply-To: "PayPal Billing" <billing@paypal-resolve.support>
+To: usuario@example.com
+Subject: Factura pendiente: acción requerida
+Date: Wed, 22 Oct 2025 12:34:56 +0000
+Message-ID: <phish-paypal-002@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="mix002"
+
+--mix002
+Content-Type: multipart/alternative; boundary="alt002"
+
+--alt002
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Tienes una factura pendiente. Descarga el comprobante y valida tu cuenta.
+
+--alt002
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+                <p>Tienes una factura pendiente.</p>
+                <p><a href="http://pay-resolve.center/login">paypal.com</a></p>
+                </body></html>
+
+--alt002--
+
+--mix002
+Content-Type: text/html; name="invoice.html"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="invoice.html"
+
+PGh0bWw+PGJvZHk+SU52b2ljZSBQZW5kaWVudGU8L2JvZHk+PC9odG1sPg==
+--mix002--

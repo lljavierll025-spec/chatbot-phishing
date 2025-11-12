@@ -1,0 +1,35 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ChatBot Detector de Phishing</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-inner">
+        <div class="title-block">
+          <div class="title">🛡️ ChatBot Detector de Phishing</div>
+          <div class="subtitle">Análisis inteligente de correos electrónicos</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="chat" class="chat-area"></div>
+    </main>
+
+    <footer class="input-area">
+      <input id="inputField" type="text" placeholder="Escribe tu mensaje aquí..." />
+      <button id="sendBtn" class="btn primary">Enviar</button>
+      <input id="fileInput" type="file" accept=".eml" style="display:none" />
+      <button id="analyzeBtn" class="btn success">📁 Analizar .eml</button>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

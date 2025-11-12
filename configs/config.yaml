@@ -1,0 +1,20 @@
+paths:
+  model_artifact: "models/artifacts/phishing_detector_pipeline.pkl"
+
+hybrid:
+  weights:
+    w1_text: 0.7
+    w2_risk: 0.2
+    w3_flags: 0.1
+  semaforo:
+    green_max: 0.30
+    yellow_max: 0.70
+
+features:
+  hard_fail_when:
+    - "auth_fail"         # SPF/DKIM/DMARC fail combinados
+    - "href_text_mismatch"
+
++paths:
+model_artifact: "models/artifacts/phishing_detector_pipeline.pkl"
+

@@ -287,7 +287,6 @@ def tpl_senales_comunes() -> str:
         "💳 Solicitud de credenciales, pagos o datos sensibles.\n"
         "📎 Adjuntos inesperados o uso de acortadores/QR sin contexto.\n"
         "*Idea práctica:* pasa el cursor por el enlace y verifica el <b>dominio</b> antes de hacer clic.\n"
-        "👉 ¿Quieres un <b>checklist</b> (enlaces/2FA/adjuntos/QR) o una <b>definición</b>?"
     )
 
 

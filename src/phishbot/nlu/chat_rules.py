@@ -444,7 +444,7 @@ def _def_breve_termino(termino: str) -> str:
         return (
             "SPF es un mecanismo que permite a un dominio indicar qué servidores están autorizados para enviar correos en su nombre.\n\n"
             "<b>Para qué sirve:</b>\n"
-            "Ayuda a detectar si un mensaje fue enviado desde un servidor legítmo o desde uno no autorizado, lo que permite identificar intentos de suplantación o phishing.\n\n"
+            "Ayuda a detectar si un mensaje fue enviado desde un servidor legítimo o desde uno no autorizado, lo que permite identificar intentos de suplantación o phishing.\n\n"
             "<b>Recomendación:</b>\n"
             "Si un correo falla SPF o proviene de un servidor no autorizado, trátalo como sospechoso; es una señal común en correos falsificados."
         )
@@ -452,12 +452,12 @@ def _def_breve_termino(termino: str) -> str:
         return (
             "DKIM es un método que permite a un servidor de correo firmar digitalmente los mensajes para demostrar que realmente fueron enviados por ese dominio y que no fueron alterados durante el envío\n\n"
             "<b>Ejemplo: </b>"
-            "Un correo de empresa.com lleva una firma DKIM que el sistema del destinatario verifica como auténtica. Si al firma no coincide , el mensaje podría haber sido manipulado o falsificado.\n\n"
-            "<b>Recomendación:</b> Antes de confiar en un correo, valida si para la verificación DKIM; los mensajes sin DKIM o con fallos en la firma pueden ser señales de phishing."
+            "Un correo de empresa.com lleva una firma DKIM que el sistema del destinatario verifica como auténtica. Si al firmar no coincide , el mensaje podría haber sido manipulado o falsificado.\n\n"
+            "<b>Recomendación:</b> Antes de confiar en un correo, valida la verificación DKIM; los mensajes sin DKIM o con fallos en la firma pueden ser señales de phishing."
         )
     if "dmarc" in t:
         return (
-            "DMARC es una política que los dominios usan para indicar cómo deben manejarse los correos que no pasan las validaciones de autenticación como SPF o DKIM, ayudando a prevenir suplantacioines.\n\n"
+            "DMARC es una política que los dominios usan para indicar cómo deben manejarse los correos que no pasan las validaciones de autenticación como SPF o DKIM, ayudando a prevenir suplantaciones.\n\n"
             "<b>Ejemplo: </b>"
             "Si empresa.com configura DMARC con una política de 'reject', cualquier correo que no pase las validaciones SPF o DKIM será rechazado.\n\n"
             "<b>Recomendación:</b> Confía más en correos de dominios que tienen DMARC correctamente configurado; si un mensaje falla DMARC; trátalo como sospechoso de phishing."
@@ -466,14 +466,14 @@ def _def_breve_termino(termino: str) -> str:
         return "2FA/MFA añade una verificación adicional (código/app/llave física) además de la contraseña para proteger tu cuenta."
     if "homograf" in t:
         return (
-            "Un ataque homógrafo consiste en crear direcciones o enlaces que parecen idénticos a los legítimos usando caracteres visualemnte similares, como letras de otro alfabeto. Esto para engañar al usuario y llevarlo a sitios falsos.\n\n"
+            "Un ataque homógrafo consiste en crear direcciones o enlaces que parecen idénticos a los legítimos usando caracteres visualmente similares, como letras de otro alfabeto. Esto para engañar al usuario y llevarlo a sitios falsos.\n\n"
             "<b>Ejemplo: </b>"
-            "El dominio 'apple.com' puede ser imitado como 'аррle.com' aquí a simple vista lucen iguales, pero en la segunda se usaaron algunas letras que provienen del alfabeto cirílico.\n\n"
+            "El dominio 'apple.com' puede ser imitado como 'аррle.com' aquí a simple vista lucen iguales, pero en la segunda se usaron algunas letras que provienen del alfabeto cirílico.\n\n"
             "<b>Recomendación:</b> Antes de hacer clic o ingresar datos, revisa cuidadosamente la dirección del enlace; si es posible, escribelo manualmente el sitio o utiliza marcadores oficiales para evitar caer en imitaciones."
         )
     if "display name" in t:
         return ("El <b>display name</b> es el nombre que aparece como remitente cuando recibes un correo, antes de ver la dirección completa."
-        "Sive para que el destinatario pueda identificar quién envía el mensaje más fácil.\n\n"
+        "Sirve para que el destinatario pueda identificar quién envía el mensaje más fácil.\n\n"
         "<b>Ejemplo: </b> \n"
         "Si el display name es 'María López - Ventas' y la dirección es mlopez@empresa.com, el destinatario verá:\n"
         "De: María López - Ventas mlopez@empresa.com\n\n"
@@ -485,10 +485,10 @@ def _def_breve_termino(termino: str) -> str:
         "<b>Ejemplo: </b> \n"
         "Un correo llega desde notificaciones@servicio.com, pero el reply-to es soporte@servicio.com.\n"
         "Si respondes, tu mensaje irá a soporte@servicio.com, no a notificaciones@servicio.com.\n\n"
-        "<b>Recomendación:</b> Antes de responder, revisas si el reply-to coincide con la dirección legítima; los atacantes suelen usar direcciones diferentes para desviar respuestas."
+        "<b>Recomendación:</b> Antes de responder, revisa si el reply-to coincide con la dirección legítima; los atacantes suelen usar direcciones diferentes para desviar respuestas."
         )
     if "return path" in t_clean:
-        return ("Return-Path es la dirección a la que se devuelven los correos que no pudieron entregarse (por ejemplo)."
+        return ("Return-Path es la dirección a la que se devuelven los correos que no pudieron entregarse (por ejemplo "
         "cuando la dirección del destinatario no existe). Sirve para gestionar los 'rebotes' y saber qué mensajes fallaron."
         "<b>Ejemplo: </b> \n"
         "Un correo se envía desde boletines@empresa.com, pero el return-path es rebotes@empresa.com.\n"
@@ -497,17 +497,17 @@ def _def_breve_termino(termino: str) -> str:
         )
     if "smishing" in t:
         return (
-            "El smishing es una variantes del phishing en el que los atacantes envían mensajes de texto (SMS) para engañarte y hacer que entregues datos personales, calves o dinero.\n\n"
+            "El smishing es una variante del phishing en el que los atacantes envían mensajes de texto (SMS) para engañarte y hacer que entregues datos personales, claves o dinero.\n\n"
             "<b>Ejemplo: </b> \n"
             '"Tu banco ha bloqueado tu tarjeta. Verifica tu identidad en este enlace: http://seguridad-banco-123.com”\n\n'
             "<b>Recomendación:</b> No abras enlaces ni compartas datos desde SMS inesperados; verifica siempre directamente con la entidad u organización usando canales o medios oficiales."
         )
     if "vishing" in t:
         return (
-            "El vishing es una variante del phishing en el que los atacantes usan llamadas telefónicas para hacerse pasar por una entidad confiable y obtener información personal, calves o pagos.\n\n"
+            "El vishing es una variante del phishing en el que los atacantes usan llamadas telefónicas para hacerse pasar por una entidad confiable y obtener información personal, claves o pagos.\n\n"
             "<b>Ejemplo: </b> \n"
             '"Le llamamos del departamento de seguridad de su banco. Necesitamos que nos confirme el código que acaba de recibir para evitar un bloqueo"\n\n'
-            "<b>Recomendación:</b> No compartas información sensible por teléfono, si sospechas cuelga y contacta tú mismo a la entidad usando números oficiales."
+            "<b>Recomendación:</b> No compartas información sensible por teléfono; si sospechas, cuelga y contacta tú mismo a la entidad usando números oficiales."
         )
     if "bec" in t:
         return "Business Email Compromise: suplantación/manejo de hilos para desviar pagos o robar info."
@@ -516,7 +516,7 @@ def _def_breve_termino(termino: str) -> str:
     if "phishing" in t:
         return "Intento de obtener datos o dinero mediante engaño por correo haciéndose pasar por otro."
     return (
-        "Los encabezados de un correo son la información técnica que meustra de dónde salió realmente un mensaje, por dónde pasó y cómo fue autenticado."
+        "Los encabezados de un correo son la información técnica que muestra de dónde salió realmente un mensaje, por dónde pasó y cómo fue autenticado."
     )
 
 
@@ -532,21 +532,21 @@ def _def_estandar_termino(termino: str) -> str:
     if "phishing" in t:
         return (
             "El <b>phishing</b> es un tipo de engaño en el que un atacante se hace pasar por una entidad confiable para que la víctima entregue información personal, "
-            "contraseñas o dsatos finacnieros, normalmente a través de correso, mensajes o sitios falsos.\n\n"
+            "contraseñas o datos financieros, normalmente a través de correos electrónicos, mensajes o sitios falsos.\n\n"
             "<b>Ejemplo: </b> \n"
-            '"Actualiza tu cuenta bancária haciendo clic aquí: http://seguridad-banco-123.com”\n\n'
+            '"Actualiza tu cuenta bancaria haciendo clic aquí: http://seguridad-banco-123.com”\n\n'
             "<b>Recomendación:</b> No hagas clic en enlaces inesperados ni entregues datos sensibles; verifica siempre la dirección del sitio y contacta a la entidad por canales oficiales antes de actuar."
         )
     if "smishing" in t:
         return (
-            "El smishing es una variantes del phishing en el que los atacantes envían mensajes de texto (SMS) para engañarte y hacer que entregues datos personales, calves o dinero.\n\n"
+            "El smishing es una variante del phishing en el que los atacantes envían mensajes de texto (SMS) para engañarte y hacer que entregues datos personales, claves o dinero.\n\n"
             "<b>Ejemplo: </b> \n"
             '"Tu banco ha bloqueado tu tarjeta. Verifica tu identidad en este enlace: http://seguridad-banco-123.com”\n\n'
             "<b>Recomendación:</b> No abras enlaces ni compartas datos desde SMS inesperados; verifica siempre directamente con la entidad u organización usando canales o medios oficiales."
         )
     if "vishing" in t:
         return (
-            "El vishing es una variante del phishing en el que los atacantes usan llamadas telefónicas para hacerse pasar por una entidad confiable y obtener información personal, calves o pagos.\n\n"
+            "El vishing es una variante del phishing en el que los atacantes usan llamadas telefónicas para hacerse pasar por una entidad confiable y obtener información personal, claves o pagos.\n\n"
             "<b>Ejemplo: </b> \n"
             '"Le llamamos del departamento de seguridad de su banco. Necesitamos que nos confirme el código que acaba de recibir para evitar un bloqueo"\n\n'
             "<b>Recomendación:</b> No compartas información sensible por teléfono, si sospechas cuelga y contacta tú mismo a la entidad usando números oficiales."

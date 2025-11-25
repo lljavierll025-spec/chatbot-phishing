@@ -72,12 +72,21 @@ ANALISIS_KEYWORDS = [
 ]
 
 SALUDO_KEYWORDS = [
-    "hola", "buenas", "que puedes hacer", "ayuda", "menu", "opciones"
+    "hola", "buenas", "que puedes hacer", "ayuda", "menu", "opciones",
+    "empezar", "inicio", "buenos dias", "buenas tardes", "buenas noches",
+    "hi", "hello"
 ]
 
 DESPEDIDA_KEYWORDS = [
     "adios", "chao", "chau", "bye", "salir", "exit", "quit",
-    "hasta luego", "nos vemos", "hasta pronto", "me voy"
+    "hasta luego", "nos vemos", "hasta pronto", "me voy",
+    "gracias adios", "cerrar", "terminar"
+]
+
+CONTINUE_KEYWORDS = [
+    "mas informacion", "mas detalles", "sigue", "continuar",
+    "explica mas", "no entendi", "otro ejemplo", "dame mas",
+    "ver mas", "profundizar"
 ]
 
 SENALES_KEYWORDS = [
@@ -176,6 +185,12 @@ def nlu_detect(text_raw: str) -> NLUResult:
 
     candidates: List[Tuple[Intent, float, Dict[str, str]]] = []
 
+    # 1.5) Petición explícita de lista de definiciones
+    if "definicion" in text or "definiciones" in text or "conceptos" in text:
+        # Si es solo la palabra o una frase corta pidiendo verlas
+        if len(text.split()) < 4:
+             candidates.append((Intent.DEFINICION, 0.9, {}))
+
     # 2) Definición por pregunta explícita
     slots = extract_definition_term(text)
     if slots:
@@ -259,11 +274,13 @@ def nlu_detect(text_raw: str) -> NLUResult:
 # ========== Plantillas (NLG) ==========
 def tpl_saludo_menu() -> str:
     return (
-        "👋 ¡Hola! Puedo ayudarte a <b>aprender</b> sobre phishing por correo:\n"
-        "🔎 Señales comunes\n"
-        "📘 Definiciones y terminología (SPF/DKIM/DMARC, 2FA, etc.)\n"
-        "🛡️ Buenas prácticas (enlaces, 2FA, adjuntos, QR)\n"
-        "¿Por dónde empezamos?"
+        "👋 <b>¡Hola! Soy tu asistente de seguridad.</b><br>"
+        "Puedo ayudarte a detectar y prevenir el phishing. ¿Qué te gustaría hacer?\n\n"
+        "🔎 <b>Ver señales comunes</b> de estafas\n"
+        "📘 <b>Consultar definiciones</b> (Phishing, DKIM, 2FA, Homógrafos, etc.)\n"
+        "🛡️ <b>Aprender buenas prácticas</b> para protegerte\n"
+        "📧 <b>Analizar un correo</b> sospechoso\n\n"
+        "<i>Escribe tu duda o elige una opción.</i>"
     )
 
 
@@ -344,14 +361,23 @@ def tpl_terminologia(termino: str) -> str:
     termino_norm = termino.strip() if termino else "el término"
     return (
         f"<b>{termino_norm} en correo electrónico</b>\n"
-        f"{_def_breve_termino(termino_norm)}\n"
-        f"<b>Para qué sirve:</b> {_beneficio_termino(termino_norm)}\n"
-        f"<b>Limitaciones:</b> {_limitacion_termino(termino_norm)}\n"
+        f"{_def_breve_termino(termino_norm)}"
     )
 
 
 def tpl_definicion(termino: str, detalle: str = "estandar") -> str:
-    t = termino.strip() if termino else "el término"
+    # Si no hay término específico, mostrar lista
+    if not termino or termino == "phishing":
+        # "phishing" por defecto si falla la detección, pero si el usuario solo dijo "definicion"
+        # queremos mostrar la lista. Ajustaremos la lógica de llamada.
+        pass
+
+    t = termino.strip() if termino else ""
+    
+    # Si no hay término o el término es la propia palabra "definición", mostrar lista
+    if not t or t in ["definicion", "definiciones", "conceptos", "terminos"]:
+        return _get_all_definitions()
+
     if detalle == "breve":
         return (
             f"<b>¿Qué es {t}?</b> {_def_breve_termino(t)}\n"
@@ -374,9 +400,9 @@ def tpl_definicion(termino: str, detalle: str = "estandar") -> str:
 
 def tpl_puente_analisis() -> str:
     return (
-        "Para <b>analizar</b> un correo real, te derivo al flujo de análisis con nuestro modelo especializado.\n"
-        "Mientras tanto, puedo <b>explicarte</b> señales, definiciones y buenas prácticas.\n"
-        "¿Quieres ver <b>señales comunes</b> o una <b>definición</b>?"
+        "<b>Analizar correo sospechoso</b><br>"
+        "Sube el archivo <b>.eml</b> para que nuestro modelo híbrido lo revise.<br><br>"
+        "<button class='chat-upload-btn' style='background-color:#10b981;color:white;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;'>📂 Subir archivo .eml</button>"
     )
 
 
@@ -389,8 +415,13 @@ def tpl_desambiguacion(o1: Intent, o2: Intent) -> str:
 
 def tpl_fuera_de_ambito() -> str:
     return (
-        "Puedo ayudarte a <b>aprender</b> sobre phishing por correo electrónico.\n"
-        "¿Quieres ver <b>señales comunes</b> o una definición?"
+        "🤔 No estoy seguro de haber entendido eso.<br>"
+        "Puedo explicarte sobre <b>phishing</b>, <b>seguridad en correos</b> o <b>analizar mensajes</b>.\n\n"
+        "Prueba con:\n"
+        "• \"¿Qué es el phishing?\"\n"
+        "• \"Señales de alerta\"\n"
+        "• \"Buenas prácticas\"\n"
+        "• \"Analizar correo\""
     )
 
 
@@ -410,55 +441,131 @@ def _def_breve_termino(termino: str) -> str:
     t = normalize(termino)
     t_clean = t.replace("-", " ")
     if "spf" in t:
-        return "SPF es un registro DNS que indica qué servidores pueden enviar correos en nombre de tu dominio."
+        return (
+            "SPF es un mecanismo que permite a un dominio indicar qué servidores están autorizados para enviar correos en su nombre.\n\n"
+            "<b>Para qué sirve:</b>\n"
+            "Ayuda a detectar si un mensaje fue enviado desde un servidor legítmo o desde uno no autorizado, lo que permite identificar intentos de suplantación o phishing.\n\n"
+            "<b>Recomendación:</b>\n"
+            "Si un correo falla SPF o proviene de un servidor no autorizado, trátalo como sospechoso; es una señal común en correos falsificados."
+        )
     if "dkim" in t:
-        return "DKIM firma criptográficamente los correos para que el receptor valide que no se alteraron."
+        return (
+            "DKIM es un método que permite a un servidor de correo firmar digitalmente los mensajes para demostrar que realmente fueron enviados por ese dominio y que no fueron alterados durante el envío\n\n"
+            "<b>Ejemplo: </b>"
+            "Un correo de empresa.com lleva una firma DKIM que el sistema del destinatario verifica como auténtica. Si al firma no coincide , el mensaje podría haber sido manipulado o falsificado.\n\n"
+            "<b>Recomendación:</b> Antes de confiar en un correo, valida si para la verificación DKIM; los mensajes sin DKIM o con fallos en la firma pueden ser señales de phishing."
+        )
     if "dmarc" in t:
-        return "DMARC indica cómo tratar correos que fallan SPF/DKIM y permite reportes de suplantación."
+        return (
+            "DMARC es una política que los dominios usan para indicar cómo deben manejarse los correos que no pasan las validaciones de autenticación como SPF o DKIM, ayudando a prevenir suplantacioines.\n\n"
+            "<b>Ejemplo: </b>"
+            "Si empresa.com configura DMARC con una política de 'reject', cualquier correo que no pase las validaciones SPF o DKIM será rechazado.\n\n"
+            "<b>Recomendación:</b> Confía más en correos de dominios que tienen DMARC correctamente configurado; si un mensaje falla DMARC; trátalo como sospechoso de phishing."
+        )
     if "2fa" in t or "mfa" in t or "doble factor" in t or "autenticacion" in t:
         return "2FA/MFA añade una verificación adicional (código/app/llave física) además de la contraseña para proteger tu cuenta."
     if "homograf" in t:
-        return "Los homógrafos usan caracteres parecidos (p. ej., 'app1e' vs. 'apple') para engañar."
+        return (
+            "Un ataque homógrafo consiste en crear direcciones o enlaces que parecen idénticos a los legítimos usando caracteres visualemnte similares, como letras de otro alfabeto. Esto para engañar al usuario y llevarlo a sitios falsos.\n\n"
+            "<b>Ejemplo: </b>"
+            "El dominio 'apple.com' puede ser imitado como 'аррle.com' aquí a simple vista lucen iguales, pero en la segunda se usaaron algunas letras que provienen del alfabeto cirílico.\n\n"
+            "<b>Recomendación:</b> Antes de hacer clic o ingresar datos, revisa cuidadosamente la dirección del enlace; si es posible, escribelo manualmente el sitio o utiliza marcadores oficiales para evitar caer en imitaciones."
+        )
     if "display name" in t:
-        return "El 'display name' es el nombre visible del remitente; puede suplantarse aunque el email sea sospechoso."
+        return ("El <b>display name</b> es el nombre que aparece como remitente cuando recibes un correo, antes de ver la dirección completa."
+        "Sive para que el destinatario pueda identificar quién envía el mensaje más fácil.\n\n"
+        "<b>Ejemplo: </b> \n"
+        "Si el display name es 'María López - Ventas' y la dirección es mlopez@empresa.com, el destinatario verá:\n"
+        "De: María López - Ventas mlopez@empresa.com\n\n"
+        "<b>Recomendación:</b> No confíes solo en el nombre que aparece como remitente; revisa siempre la dirección de correo completa."
+        )
     if "reply to" in t_clean:
-        return "Reply-To indica a qué dirección se enviará tu respuesta, aunque el correo aparente venir de otra cuenta."
+        return ( "Reply-To es la dirección de correo a la que se enviarán las respuestas, aunque el mensaje original haya sido enviado desde otra dirección.\n"
+        "Sirve para dirigir las respuestas a una cuenta distinta, por gestión o conveniencia.\n\n"
+        "<b>Ejemplo: </b> \n"
+        "Un correo llega desde notificaciones@servicio.com, pero el reply-to es soporte@servicio.com.\n"
+        "Si respondes, tu mensaje irá a soporte@servicio.com, no a notificaciones@servicio.com.\n\n"
+        "<b>Recomendación:</b> Antes de responder, revisas si el reply-to coincide con la dirección legítima; los atacantes suelen usar direcciones diferentes para desviar respuestas."
+        )
     if "return path" in t_clean:
-        return "Return-Path es la dirección que recibirá rebotes; si pertenece a otro dominio puede revelar un desvío."
+        return ("Return-Path es la dirección a la que se devuelven los correos que no pudieron entregarse (por ejemplo)."
+        "cuando la dirección del destinatario no existe). Sirve para gestionar los 'rebotes' y saber qué mensajes fallaron."
+        "<b>Ejemplo: </b> \n"
+        "Un correo se envía desde boletines@empresa.com, pero el return-path es rebotes@empresa.com.\n"
+        "Si el mensaje no llega, el aviso de error se enviará a rebotes@empresa.com.\n\n"
+        "<b>Recomendación:</b> Si notas discrepancias entre el remitente y el return-path, considera el mensaje sospechoso; es una señal frecuente en correos falsificados"
+        )
     if "smishing" in t:
-        return "Smishing es phishing por SMS: enlaces/trampas enviados por mensajes de texto."
+        return (
+            "El smishing es una variantes del phishing en el que los atacantes envían mensajes de texto (SMS) para engañarte y hacer que entregues datos personales, calves o dinero.\n\n"
+            "<b>Ejemplo: </b> \n"
+            '"Tu banco ha bloqueado tu tarjeta. Verifica tu identidad en este enlace: http://seguridad-banco-123.com”\n\n'
+            "<b>Recomendación:</b> No abras enlaces ni compartas datos desde SMS inesperados; verifica siempre directamente con la entidad u organización usando canales o medios oficiales."
+        )
     if "vishing" in t:
-        return "Vishing es phishing por voz/llamadas, usando presión o urgencia para que reveles datos."
+        return (
+            "El vishing es una variante del phishing en el que los atacantes usan llamadas telefónicas para hacerse pasar por una entidad confiable y obtener información personal, calves o pagos.\n\n"
+            "<b>Ejemplo: </b> \n"
+            '"Le llamamos del departamento de seguridad de su banco. Necesitamos que nos confirme el código que acaba de recibir para evitar un bloqueo"\n\n'
+            "<b>Recomendación:</b> No compartas información sensible por teléfono, si sospechas cuelga y contacta tú mismo a la entidad usando números oficiales."
+        )
     if "bec" in t:
         return "Business Email Compromise: suplantación/manejo de hilos para desviar pagos o robar info."
     if "ingenieria" in t:
         return "Ingeniería social: manipulación psicológica para influir en decisiones y obtener información o acción."
     if "phishing" in t:
         return "Intento de obtener datos o dinero mediante engaño por correo haciéndose pasar por otro."
-    return "Concepto de seguridad en correo; puedo darte ejemplos y señales típicas."
+    return (
+        "Los encabezados de un correo son la información técnica que meustra de dónde salió realmente un mensaje, por dónde pasó y cómo fue autenticado."
+    )
 
 
 def _def_estandar_termino(termino: str) -> str:
     t = normalize(termino)
     if "2fa" in t or "mfa" in t or "doble factor" in t or "autenticacion" in t:
         return (
-            "Segundo factor de autenticación además de la contraseña (app autenticadora, token, llave física o SMS) que reduce drásticamente el impacto de contraseñas filtradas o robadas.")
+            "La autenticación en dos pasos (2FA) es un método de seguridad que requiere dos formas diferentes de identificación para acceder a una cuenta. "
+            "Normalmente requiere una contraseña y un código de verificación que recibes en tu teléfono o en una app. "
+            "Esto hace mucho más difícil que alguien entre a tus cuentas sin permiso.\n\n"
+            "<b>Recomendación:</b> Activa 2FA en todas tus cuentas, especialmente en cuentas bancarias y de correo."
+        )
     if "phishing" in t:
         return (
-            "Técnica por la que un atacante se hace pasar por una entidad legítima para que entregues credenciales, "
-            "descargues malware o realices pagos, usualmente mediante correos con enlaces o adjuntos.")
+            "El <b>phishing</b> es un tipo de engaño en el que un atacante se hace pasar por una entidad confiable para que la víctima entregue información personal, "
+            "contraseñas o dsatos finacnieros, normalmente a través de correso, mensajes o sitios falsos.\n\n"
+            "<b>Ejemplo: </b> \n"
+            '"Actualiza tu cuenta bancária haciendo clic aquí: http://seguridad-banco-123.com”\n\n'
+            "<b>Recomendación:</b> No hagas clic en enlaces inesperados ni entregues datos sensibles; verifica siempre la dirección del sitio y contacta a la entidad por canales oficiales antes de actuar."
+        )
     if "smishing" in t:
-        return ("Variante de phishing vía SMS que incluye enlaces a sitios falsos o números para devolver la llamada, "
-                "aprovechando urgencia o premios falsos.")
+        return (
+            "El smishing es una variantes del phishing en el que los atacantes envían mensajes de texto (SMS) para engañarte y hacer que entregues datos personales, calves o dinero.\n\n"
+            "<b>Ejemplo: </b> \n"
+            '"Tu banco ha bloqueado tu tarjeta. Verifica tu identidad en este enlace: http://seguridad-banco-123.com”\n\n'
+            "<b>Recomendación:</b> No abras enlaces ni compartas datos desde SMS inesperados; verifica siempre directamente con la entidad u organización usando canales o medios oficiales."
+        )
     if "vishing" in t:
         return (
-            "Variante por llamada telefónica o mensajes de voz; el atacante finge ser soporte/banco para obtener datos o transferencias.")
+            "El vishing es una variante del phishing en el que los atacantes usan llamadas telefónicas para hacerse pasar por una entidad confiable y obtener información personal, calves o pagos.\n\n"
+            "<b>Ejemplo: </b> \n"
+            '"Le llamamos del departamento de seguridad de su banco. Necesitamos que nos confirme el código que acaba de recibir para evitar un bloqueo"\n\n'
+            "<b>Recomendación:</b> No compartas información sensible por teléfono, si sospechas cuelga y contacta tú mismo a la entidad usando números oficiales."
+        )   
     if "bec" in t:
         return (
-            "Fraude de correo empresarial donde se comprometen cuentas o se imitan dominios para instruir pagos o cambios bancarios.")
+            "BEC (Business Email Comromise) es un tipo de phishing empresarial que se hace pasar por una persona de confianza.\n"
+            "<b>Ejemplo: </b>"
+            "Un jefe o un proveedor que pide cambios urgentes en una cuenta bancaria.\n"
+            "Consiste en engañar a la víctima y lograr que envíe dinero o información sensible. Es una estafa basada en la suplantación y el engaño, no en romper sistemas técnicos.\n\n"
+            "<b>Recomendación:</b> Desconfía de solicitudes de pagos o cambios urgentes hechas por correo; verifica siempre por otro canal o antes de actuar."
+            )
     if "ingenieria" in t:
         return (
-            "Conjunto de tácticas que explotan sesgos/urgencia/confianza para inducir a acciones riesgosas o revelar información sensible.")
+            "La ingenería social es una técnica de manipulación en la que un atacante aprovecha la confianza o el descuido de una persona para obtener información sensible, acceso o hacer que realice una acción perjudicial.\n\n"
+            "<b>Ejemplo: </b>"
+            "Alguien se hace pasar por soporte técnico y pide tu contraseña 'para arreglar un problema urgente'.\n\n"
+            "<b>Recomendación:</b> Verifica siempre la identidad de quien solicita información o acceso; no compartas datos sensibles sin confirmar por canales o medios oficiales."
+        )
     return _def_breve_termino(termino)
 
 
@@ -578,8 +685,27 @@ def next_response(user_text: str, ctx: DialogueContext) -> Tuple[str, DialogueCo
         return tpl_terminologia(term), DialogueContext(state=State.EXPLICACION, ultimo_tema=term)
 
     if nlu.intent == Intent.DEFINICION:
-        term = nlu.slots.get("term") or nlu.slots.get("term2") or _guess_term_from_text(user_text)
+        # Si no hay slots, intentamos adivinar. Si no hay nada claro, pasamos None para mostrar lista.
+        term = nlu.slots.get("term") or nlu.slots.get("term2")
+        if not term:
+            # Si el usuario dijo "definicion" a secas, term es None -> lista
+            # Si dijo "que es phishing", term es "phishing"
+            guessed = _guess_term_from_text(user_text)
+            # Hack: si _guess devuelve "phishing" (default) pero el usuario NO escribió phishing,
+            # asumimos que quiere la lista general.
+            if "phishing" not in normalize(user_text) and guessed == "phishing":
+                term = None
+            else:
+                term = guessed
+
         return tpl_definicion(term, "estandar"), DialogueContext(state=State.EXPLICACION, ultimo_tema=term)
+
+    # Manejo de continuación / contexto simple
+    if count_hits(normalize(user_text), CONTINUE_KEYWORDS) > 0 and ctx.ultimo_tema:
+        # Si pide más info y tenemos un tema previo
+        if ctx.ultimo_tema.startswith("bp_"):
+            return tpl_bp_generales(), ctx
+        return tpl_definicion(ctx.ultimo_tema, "detalle"), ctx
 
     return tpl_fuera_de_ambito(), DialogueContext(state=State.MENU_EDU)
 
@@ -591,6 +717,35 @@ def _guess_term_from_text(text: str) -> str:
             return term
     tokens = [w for w in re.findall(r"[a-z0-9\-\._]+", t) if len(w) > 2]
     return tokens[-1] if tokens else "phishing"
+
+
+def _get_all_definitions() -> str:
+    # Lista curada de conceptos para mostrar al usuario (sin duplicados/sinónimos)
+    # Formato: "Término a mostrar" (que el usuario puede escribir)
+    display_terms = [
+        "Phishing",
+        "Smishing",
+        "Vishing",
+        "Ingeniería Social",
+        "BEC (Business Email Compromise)",
+        "2FA / MFA",
+        "SPF",
+        "DKIM",
+        "DMARC",
+        "Return-Path",
+        "Reply-To",
+        "Display Name",
+        "Homógrafos",
+        "Cabeceras"
+    ]
+    
+    html = "<b>📚 Definiciones y conceptos útiles:</b><br><ul>"
+    for t in sorted(display_terms):
+        # Usamos el primer término para el ejemplo de comando si es compuesto
+        cmd_term = t.split("/")[0].split("(")[0].strip().lower()
+        html += f"<li>{t}</li>"
+    html += "</ul><br><i>Escribe 'que es [término]' para ver detalles.</i>"
+    return html
 
 
 # ========== Demo CLI ==========

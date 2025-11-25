@@ -18,10 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
   addMessage(welcome, true);
 
   sendBtn.addEventListener("click", sendMessage);
-  input.addEventListener("keydown", (e) => { if (e.key === "Enter") sendMessage(); });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
 
   analyzeBtn.addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", handleFile);
+
+  // Delegación de eventos para botones dentro del chat
+  chat.addEventListener("click", (e) => {
+    if (e.target.classList.contains("chat-upload-btn")) {
+      fileInput.click();
+    }
+  });
 
   function addMessage(htmlContent, isBot) {
     const row = document.createElement("div");
@@ -70,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const resp = await fetch("/api/message", {
         method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({text})
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
       });
       const data = await resp.json();
       if (!data.ok) {
@@ -85,7 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
         input.disabled = true;
         sendBtn.disabled = true;
         analyzeBtn.disabled = true;
-        setTimeout(() => { addMessage("👋 ¡Hasta luego!", true); }, 500);
+        setTimeout(() => {
+          addMessage("👋 ¡Hasta luego!", true);
+        }, 500);
       }
       // Si la intención fue ANALISIS_PETICION el backend normalmente lo marca en 'intent'
       // El servidor original abría dialogo - en web pedimos al usuario subir archivo con botón
@@ -107,10 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
     analyzeBtn.innerText = "⏳ Analizando...";
 
     try {
-      const resp = await fetch("/api/analyze", {method: "POST", body: fd});
+      const resp = await fetch("/api/analyze", { method: "POST", body: fd });
       const data = await resp.json();
       if (!data.ok) {
-        addMessage(`❌ Error: ${escapeHtml(data.error || "Error desconocido")}`, true);
+        addMessage(
+          `❌ Error: ${escapeHtml(data.error || "Error desconocido")}`,
+          true
+        );
       } else {
         // data.html viene listo para insertar
         addMessage(data.html, true);

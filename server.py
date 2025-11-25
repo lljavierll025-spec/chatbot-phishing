@@ -29,6 +29,7 @@ except Exception as e:
             pass
     class Intent:
         ANALISIS_PETICION = None
+        DESPEDIDA = "despedida"
 
 try:
     from src.phishbot.analyzers.phishing_analyzer import analyze_eml_hybrid
@@ -173,14 +174,8 @@ def api_message():
     # Formatear respuesta (reemplazar saltos por <br>)
     reply_html = reply.replace("\n", "<br>") if isinstance(reply, str) else str(reply)
 
-    # Detectar despedida
-    goodbye_words = [
-        'adios', 'adiós', 'chao', 'chau', 'bye', 'salir',
-        'exit', 'quit', 'hasta luego', 'nos vemos', 'gracias adios',
-        'hasta pronto', 'me voy'
-    ]
-    text_lower = user_text.lower().strip()
-    is_goodbye = any(word in text_lower for word in goodbye_words)
+    # Detectar despedida (usando NLU si es posible)
+    is_goodbye = (getattr(nlu, "intent", None) == Intent.DESPEDIDA)
 
     return jsonify({"ok": True, "reply": reply_html, "is_goodbye": is_goodbye, "intent": getattr(nlu, "intent", None)})
 
